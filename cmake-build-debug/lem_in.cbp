@@ -17,6 +17,50 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/sapril/lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="hashmap">
+				<Option output="/Users/sapril/lem_in/cmake-build-debug/hashmap" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/sapril/lem_in/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/sapril/lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 hashmap"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/sapril/lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/sapril/lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/sapril/lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="hashmap/fast">
+				<Option output="/Users/sapril/lem_in/cmake-build-debug/hashmap" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/sapril/lem_in/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/sapril/lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 hashmap/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/sapril/lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/sapril/lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/sapril/lem_in/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="rebuild_cache">
 				<Option working_dir="/Users/sapril/lem_in/cmake-build-debug"/>
 				<Option type="4"/>
@@ -82,16 +126,155 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/sapril/lem_in/README.md">
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_check_end_spaces.c">
 			<Option target="lem_in"/>
 		</Unit>
-		<Unit filename="/Users/sapril/lem_in/author">
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_check_start_spaces.c">
 			<Option target="lem_in"/>
 		</Unit>
-		<Unit filename="/Users/sapril/lem_in/includes/lem_in.h">
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_convert_dec_base_to_str.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_convert_undec_base_to_str.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_find_and_remove_char.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_isalnum.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_isalpha.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_isascii.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_isdigit.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_isprint.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_isspace.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_itoa.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_str_is_lowercase.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_str_is_numeric_no_spaces.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_str_is_numeric_with_spaces.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_str_is_printable.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_str_is_uppercase.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strcat.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strchr.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strclr.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strcmp.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strcpy.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strdel.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strdup.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strequ.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_striter.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_striteri.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strjoin.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strlcat.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strlen.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strmap.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strmapi.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strncat.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strncmp.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strncpy.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strnequ.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strnew.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strnlen.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strnstr.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strrchr.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strsplit.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strstr.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strsub.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_strtrim.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_tolower.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/ft_str/ft_toupper.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/libft/src/get_next_line.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/free_data.c">
 			<Option target="lem_in"/>
 		</Unit>
 		<Unit filename="/Users/sapril/lem_in/src/get_info.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/hashmap.c">
+			<Option target="hashmap"/>
 			<Option target="lem_in"/>
 		</Unit>
 		<Unit filename="/Users/sapril/lem_in/src/lem_in.c">
