@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(lem_in
         author
-        README.md)
+        README.md src/get_info.c includes/lem_in.h src/lem_in.c src/read_map.c)
+
+target_link_libraries(lem_in ${CMAKE_SOURCE_DIR}/libft/libft.a)

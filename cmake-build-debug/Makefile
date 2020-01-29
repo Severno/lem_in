@@ -123,6 +123,87 @@ lem_in/fast:
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/build
 .PHONY : lem_in/fast
 
+src/get_info.o: src/get_info.c.o
+
+.PHONY : src/get_info.o
+
+# target to build an object file
+src/get_info.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/get_info.c.o
+.PHONY : src/get_info.c.o
+
+src/get_info.i: src/get_info.c.i
+
+.PHONY : src/get_info.i
+
+# target to preprocess a source file
+src/get_info.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/get_info.c.i
+.PHONY : src/get_info.c.i
+
+src/get_info.s: src/get_info.c.s
+
+.PHONY : src/get_info.s
+
+# target to generate assembly for a file
+src/get_info.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/get_info.c.s
+.PHONY : src/get_info.c.s
+
+src/lem_in.o: src/lem_in.c.o
+
+.PHONY : src/lem_in.o
+
+# target to build an object file
+src/lem_in.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/lem_in.c.o
+.PHONY : src/lem_in.c.o
+
+src/lem_in.i: src/lem_in.c.i
+
+.PHONY : src/lem_in.i
+
+# target to preprocess a source file
+src/lem_in.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/lem_in.c.i
+.PHONY : src/lem_in.c.i
+
+src/lem_in.s: src/lem_in.c.s
+
+.PHONY : src/lem_in.s
+
+# target to generate assembly for a file
+src/lem_in.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/lem_in.c.s
+.PHONY : src/lem_in.c.s
+
+src/read_map.o: src/read_map.c.o
+
+.PHONY : src/read_map.o
+
+# target to build an object file
+src/read_map.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/read_map.c.o
+.PHONY : src/read_map.c.o
+
+src/read_map.i: src/read_map.c.i
+
+.PHONY : src/read_map.i
+
+# target to preprocess a source file
+src/read_map.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/read_map.c.i
+.PHONY : src/read_map.c.i
+
+src/read_map.s: src/read_map.c.s
+
+.PHONY : src/read_map.s
+
+# target to generate assembly for a file
+src/read_map.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/read_map.c.s
+.PHONY : src/read_map.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -132,6 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... lem_in"
+	@echo "... src/get_info.o"
+	@echo "... src/get_info.i"
+	@echo "... src/get_info.s"
+	@echo "... src/lem_in.o"
+	@echo "... src/lem_in.i"
+	@echo "... src/lem_in.s"
+	@echo "... src/read_map.o"
+	@echo "... src/read_map.i"
+	@echo "... src/read_map.s"
 .PHONY : help
 
 

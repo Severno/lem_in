@@ -88,6 +88,18 @@
 		<Unit filename="/Users/sapril/lem_in/author">
 			<Option target="lem_in"/>
 		</Unit>
+		<Unit filename="/Users/sapril/lem_in/includes/lem_in.h">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/get_info.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/lem_in.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/read_map.c">
+			<Option target="lem_in"/>
+		</Unit>
 		<Unit filename="/Users/sapril/lem_in/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
