@@ -281,3 +281,10 @@ CMakeFiles/lem_in.dir/src/lem_in.c.o: ../src/lem_in.c
 
 CMakeFiles/lem_in.dir/src/read_map.c.o: ../src/read_map.c
 
+CMakeFiles/lem_in.dir/src/validation.c.o: ../includes/lem_in.h
+CMakeFiles/lem_in.dir/src/validation.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/lem_in.dir/src/validation.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/lem_in.dir/src/validation.c.o: ../libft/includes/libft.h
+CMakeFiles/lem_in.dir/src/validation.c.o: ../libft/includes/sort_algs.h
+CMakeFiles/lem_in.dir/src/validation.c.o: ../src/validation.c
+

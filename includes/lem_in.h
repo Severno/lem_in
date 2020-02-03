@@ -29,6 +29,7 @@ typedef struct		s_room
 	struct s_room	**in_links;
 	struct s_room	**out_links;
 	int				bfs_lvl;
+
 }					t_room;
 
 typedef struct		s_entry
@@ -52,7 +53,7 @@ typedef struct		s_lem
 	char			*start;
 	char			*end;
 	int				fd;
-
+	char			start_end_flag;
 }					t_lem;
 
 // hashmap
@@ -67,18 +68,24 @@ void				ht_print(t_ht *hashtable);
 t_room				*create_room(char **name, int x, int y);
 
 // get_info
-void				get_ants();
-void				get_rooms();
-void				get_connections();
-void				get_comments();
-void				get_lines(t_lem *lem, char *file_name);
-void				add_special_el(t_lem *lem, char **dest, char **lines, char **split_str);
+void				get_info(t_lem *lem, char *file_name);
+void				add_link(t_lem *lem, char *lines, char **split_str);
+void				add_el_to_hash_map(t_lem *lem, char **lines, char **split_str);
+void				add_start_or_end(t_lem *lem, char **split_str, char **lines);
+int					check_coord_valid(char *x, char *y);
 
 // free data
 void				free_hash_table_entries(t_lem **lem, t_room *check_room, unsigned long slot);
 void				free_hash_table_main(unsigned long slot, t_lem **lem);
 void				free_hash_table(t_lem **lem);
-void				free_data(t_lem **lem);
+int					free_data(t_lem **lem);
 void				free_split_str(char ***tab);
+
+// validation
+int					is_end_or_start(t_lem *lem, char **split_str);
+int					is_room(char **split_str, char **lines);
+int					is_connection(t_lem *lem, char **split_connections);
+int					is_ant(const char *lines, char **split_str);
+int					is_comment(const char *lines);
 
 #endif

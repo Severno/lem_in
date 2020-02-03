@@ -281,3 +281,10 @@ CMakeFiles/lem_in.dir/src/lem_in.c.o
  /Users/sapril/lem_in/src/lem_in.c
 CMakeFiles/lem_in.dir/src/read_map.c.o
  /Users/sapril/lem_in/src/read_map.c
+CMakeFiles/lem_in.dir/src/validation.c.o
+ /Users/sapril/lem_in/includes/lem_in.h
+ /Users/sapril/lem_in/libft/includes/ft_printf.h
+ /Users/sapril/lem_in/libft/includes/get_next_line.h
+ /Users/sapril/lem_in/libft/includes/libft.h
+ /Users/sapril/lem_in/libft/includes/sort_algs.h
+ /Users/sapril/lem_in/src/validation.c

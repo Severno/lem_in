@@ -20,7 +20,7 @@ CYAN_IN:=\033[1;36m
 WHITE_IN:=\033[1;37m
 # ==================
 
-FILES = ...
+FILES = free_data get_info hashmap lem_in read_map validation
 
 
 FILES_LEM_IN= $(filter-out checker, $(FILES))
@@ -37,7 +37,7 @@ CC:=gcc
 C_FLAGS:=-Wall -Wextra -Werror -I $(HEAD_PATH)
 CACHE=.cache_exists
 
-all: libft_make $(PUSH_SWAP) $(CHECKER)
+all: libft_make $(LEM_IN)
 
 libft_make:
 	@cd libft/; make; cp libft.a ..;

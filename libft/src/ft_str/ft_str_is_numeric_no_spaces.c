@@ -12,6 +12,8 @@
 
 int		ft_str_is_numeric_no_spaces(char *str)
 {
+	if (!str)
+		return (0);
 	while (*str)
 	{
 		if ((*str >= '0' && *str <= '9')

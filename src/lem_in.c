@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:17:21 by sapril            #+#    #+#             */
-/*   Updated: 2020/01/29 18:31:32 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/03 19:08:31 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_lem		*create_lem_in()
 	new_lem->fd = -1;
 	new_lem->ants = -1;
 	new_lem->names = NULL;
+	new_lem->start_end_flag = 0;
 //	new_lem->ants = get_ants();
 	return (new_lem);
 }
@@ -53,43 +54,56 @@ t_room *create_room( char **name, int x, int y)
 }
 
 
-void print_rooms(t_lem *lem, t_room *start, int cur_out_degree)
+void print_rooms(t_lem *lem, t_room *start)
 {
 	int in_degree;
 	int out_degree;
+	int rooms;
 
-	if (cur_out_degree >= start->out_degree)
-		return;
+	rooms = 48;
 	in_degree = 0;
 	out_degree = 0;
-	ft_printf("Root name = %s, x = %d, y = %d", start->name, start->coord_x, start->coord_y);
-	while (in_degree < start->in_degree)
+	while (rooms < 56)
 	{
-		ft_printf("In link name = %s, x = %d, y = %d, link num = %d\n", start->in_links[in_degree]->name,
-				start->in_links[in_degree]->coord_x, start->in_links[in_degree]->coord_y, in_degree + 1);
-		in_degree++;
+		ft_printf("Root name = %s, x = %d, y = %d \n", lem->ht->entries[rooms]->value->name, lem->ht->entries[rooms]->value->coord_x, lem->ht->entries[rooms]->value->coord_y);
+		while (out_degree < lem->ht->entries[rooms]->value->out_degree)
+		{
+			ft_printf("Out link name = %s, x = %d, y = %d, link num = %d\n", lem->ht->entries[rooms]->value->out_links[out_degree]->name,
+					  lem->ht->entries[rooms]->value->out_links[out_degree]->coord_x, lem->ht->entries[rooms]->value->out_links[out_degree]->coord_y, out_degree + 1);
+			out_degree++;
+		}
+		while (in_degree < lem->ht->entries[rooms]->value->in_degree)
+		{
+			ft_printf("In link name = %s, x = %d, y = %d, link num = %d\n", lem->ht->entries[rooms]->value->in_links[in_degree]->name,
+					  lem->ht->entries[rooms]->value->in_links[in_degree]->coord_x, lem->ht->entries[rooms]->value->in_links[in_degree]->coord_y, in_degree + 1);
+			in_degree++;
+		}
+		in_degree = 0;
+		out_degree = 0;
+		rooms++;
+		ft_putchar('\n');
 	}
-	while (out_degree < start->out_degree)
-	{
-		ft_printf("Out link name = %s, x = %d, y = %d, link num = %d\n", start->out_links[out_degree]->name,
-				start->out_links[out_degree]->coord_x, start->out_links[out_degree]->coord_y, out_degree + 1);
-		out_degree++;
-	}
-	print_rooms(lem, start->out_links[cur_out_degree], cur_out_degree + 1);
+
 }
 
 int			main(int argc, char *argv[])
 {
 	t_lem *lem;
-
+//	int n;
+//
+//	n = 0;
+//	n = n ^ 1;
+//	n = n ^ 2;
+//	if (n)
+//		printf("%d\n", n);
 	lem = create_lem_in();
 	lem->fd = open("../maps/test.map", O_RDONLY);
-	get_lines(lem, "../maps/test.map");
+	get_info(lem, "../maps/test.map");
 	ft_putstr(lem->names);
 	ht_print(lem->ht);
 	ft_printf("start = %s\n", lem->start);
 	ft_printf("end = %s\n", lem->end);
-	print_rooms(lem, ht_get(lem->ht, lem->start), 0);
+	print_rooms(lem, ht_get(lem->ht, lem->start));
 	free_data(&lem);
 	return (0);
 }

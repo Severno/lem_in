@@ -55,6 +55,7 @@ add_executable(lem_in
         src/read_map.c
         src/hashmap.c
         src/free_data.c
+        src/validation.c
         libft/src/get_next_line.c
         )
 

@@ -51,6 +51,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/lem_in.dir/src/hashmap.c.o"
   "CMakeFiles/lem_in.dir/src/lem_in.c.o"
   "CMakeFiles/lem_in.dir/src/read_map.c.o"
+  "CMakeFiles/lem_in.dir/src/validation.c.o"
   "lem_in"
   "lem_in.pdb"
 )

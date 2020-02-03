@@ -283,6 +283,9 @@
 		<Unit filename="/Users/sapril/lem_in/src/read_map.c">
 			<Option target="lem_in"/>
 		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/validation.c">
+			<Option target="lem_in"/>
+		</Unit>
 		<Unit filename="/Users/sapril/lem_in/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

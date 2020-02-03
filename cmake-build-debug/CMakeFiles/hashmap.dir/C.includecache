@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/sapril/lem_in/includes/hash_table.h
-lem_in.h
-/Users/sapril/lem_in/includes/lem_in.h
-
 /Users/sapril/lem_in/includes/lem_in.h
 ../libft/includes/libft.h
 /Users/sapril/lem_in/libft/includes/libft.h
@@ -49,6 +45,6 @@ libft.h
 /Users/sapril/lem_in/libft/includes/libft.h
 
 /Users/sapril/lem_in/src/hashmap.c
-../includes/hash_table.h
-/Users/sapril/lem_in/includes/hash_table.h
+../includes/lem_in.h
+/Users/sapril/lem_in/includes/lem_in.h
 

@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 11:16:29 by sapril            #+#    #+#             */
-/*   Updated: 2020/01/29 19:09:10 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/03 15:06:33 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void				free_hash_table(t_lem **lem)
 	{
 		slot = hash(split_names[i]);
 		check_room = ht_get((*lem)->ht, split_names[i]);
-		free_room_links(&(*lem)->ht->entries[slot]->value);
-		free_hash_table_entries(lem, check_room, slot);
+//		free_room_links(&(*lem)->ht->entries[slot]->value);
+//		free_hash_table_entries(lem, check_room, slot);
 		free_hash_table_main(slot, lem);
 		i++;
 	}
@@ -85,7 +85,7 @@ void				free_hash_table(t_lem **lem)
 	free_split_str(&split_names);
 }
 
-void				free_data(t_lem **lem)
+int				free_data(t_lem **lem)
 {
 	if ((*lem)->ht)
 		free_hash_table(lem);
@@ -96,6 +96,7 @@ void				free_data(t_lem **lem)
 		(*lem)->end ? free((*lem)->end) : 0;
 		free(*lem);
 	}
+	return (1);
 }
 
 void				free_split_str(char ***tab)
