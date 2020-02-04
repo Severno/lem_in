@@ -251,6 +251,13 @@ CMakeFiles/lem_in.dir/libft/src/get_next_line.c.o: ../libft/includes/libft.h
 CMakeFiles/lem_in.dir/libft/src/get_next_line.c.o: ../libft/includes/sort_algs.h
 CMakeFiles/lem_in.dir/libft/src/get_next_line.c.o: ../libft/src/get_next_line.c
 
+CMakeFiles/lem_in.dir/src/bfs.c.o: ../includes/lem_in.h
+CMakeFiles/lem_in.dir/src/bfs.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/lem_in.dir/src/bfs.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/lem_in.dir/src/bfs.c.o: ../libft/includes/libft.h
+CMakeFiles/lem_in.dir/src/bfs.c.o: ../libft/includes/sort_algs.h
+CMakeFiles/lem_in.dir/src/bfs.c.o: ../src/bfs.c
+
 CMakeFiles/lem_in.dir/src/free_data.c.o: ../includes/lem_in.h
 CMakeFiles/lem_in.dir/src/free_data.c.o: ../libft/includes/ft_printf.h
 CMakeFiles/lem_in.dir/src/free_data.c.o: ../libft/includes/get_next_line.h
@@ -278,6 +285,13 @@ CMakeFiles/lem_in.dir/src/lem_in.c.o: ../libft/includes/get_next_line.h
 CMakeFiles/lem_in.dir/src/lem_in.c.o: ../libft/includes/libft.h
 CMakeFiles/lem_in.dir/src/lem_in.c.o: ../libft/includes/sort_algs.h
 CMakeFiles/lem_in.dir/src/lem_in.c.o: ../src/lem_in.c
+
+CMakeFiles/lem_in.dir/src/queue.c.o: ../includes/lem_in.h
+CMakeFiles/lem_in.dir/src/queue.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/lem_in.dir/src/queue.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/lem_in.dir/src/queue.c.o: ../libft/includes/libft.h
+CMakeFiles/lem_in.dir/src/queue.c.o: ../libft/includes/sort_algs.h
+CMakeFiles/lem_in.dir/src/queue.c.o: ../src/queue.c
 
 CMakeFiles/lem_in.dir/src/read_map.c.o: ../src/read_map.c
 

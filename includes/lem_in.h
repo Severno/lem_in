@@ -4,6 +4,7 @@
 # define TABLE_SIZE 100000
 # define NICE_PRIME_NUMBER 37
 # define MIN_LINKS 10
+# define QUEUE_SIZE 5000
 # define X 0
 # define Y 1
 # define RED     "\x1b[31m"
@@ -44,9 +45,29 @@ typedef struct		s_hash_table
 	t_entry			**entries;
 }					t_ht;
 
+//typedef struct		s_queue
+//{
+//	t_room 			**a;
+//	int				front;
+//	int				back;
+//}					t_queue;
+
+typedef struct			s_qnode
+{
+	t_room				*room;
+	struct s_qnode		*next;
+}						t_qnode;
+
+typedef struct			s_queue
+{
+	t_qnode				*front;
+	t_qnode				*rear;
+}						t_queue;
+
 typedef struct		s_lem
 {
 	int				ants;
+	int				rooms_cap;
 	char			**lines;
 	char			*names;
 	t_ht			*ht;
@@ -54,6 +75,7 @@ typedef struct		s_lem
 	char			*end;
 	int				fd;
 	char			start_end_flag;
+	t_queue			*queue;
 }					t_lem;
 
 // hashmap
@@ -63,6 +85,24 @@ t_entry				*ht_pair(const char *key, t_room **value);
 void				ht_set(t_ht *hashtable, const char *key, t_room **value);
 t_room				*ht_get(t_ht *hashtable, const char *key);
 void				ht_print(t_ht *hashtable);
+
+// queue
+//t_queue				*create_queue();
+//void				enqueue(t_queue *queue, t_room *room);
+//t_room				*dequeue(t_queue *queue);
+//void				display(t_queue *queue);
+
+// queue linked list
+t_queue		*queue_create();
+t_qnode		*queue_new_node(t_room *room);
+void		enqueue(t_queue *queue, t_room *room);
+void		dequeue(t_queue *queue);
+t_qnode		*queue_get_front(t_queue **queue);
+
+// bfs
+t_ht		*create_seen(int size);
+void		bfs_set_lvl(t_lem *lem, t_room *start);
+void		free_seen(t_lem *lem, t_ht *seen);
 
 //lemin
 t_room				*create_room(char **name, int x, int y);

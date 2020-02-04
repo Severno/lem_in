@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 11:16:29 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/03 15:06:33 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/04 18:52:30 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,71 @@ void				free_hash_table(t_lem **lem)
 	free_split_str(&split_names);
 }
 
+void free_links(t_room **curr_room)
+{
+	int i;
+
+	i = 0;
+	while (i < MIN_LINKS)
+		(*curr_room)->in_links[i++] = NULL;
+	i = 0;
+	while (i < MIN_LINKS)
+		free((*curr_room)->in_links[i++]);
+	free((*curr_room)->in_links);
+	(*curr_room)->in_links = NULL;
+	i = 0;
+	while (i < MIN_LINKS)
+		(*curr_room)->out_links[i++] = NULL;
+	i = 0;
+	while (i < MIN_LINKS)
+		free((*curr_room)->out_links[i++]);
+	free((*curr_room)->out_links);
+	(*curr_room)->out_links = NULL;
+}
+
 int				free_data(t_lem **lem)
 {
-	if ((*lem)->ht)
-		free_hash_table(lem);
-	if (*lem)
+	char **names_split;
+	t_entry *curr_entry;
+	t_room *curr_room;
+	int i;
+
+	names_split = ft_strsplit((*lem)->names, '\n');
+	i = 0;
+	while (names_split[i])
 	{
-		(*lem)->names ? free((*lem)->names) : 0;
-		(*lem)->start ? free((*lem)->start) : 0;
-		(*lem)->end ? free((*lem)->end) : 0;
-		free(*lem);
+		curr_entry = (*lem)->ht->entries[hash(names_split[i])];
+		curr_room = curr_entry->value;
+		free_links(&curr_room);
+		i++;
 	}
+	i = 0;
+	while (names_split[i])
+	{
+		curr_entry = (*lem)->ht->entries[hash(names_split[i])];
+		free(curr_entry->value);
+		curr_entry->value = NULL;
+		i++;
+	}
+	while (names_split[i])
+	{
+		curr_entry = (*lem)->ht->entries[hash(names_split[i])];
+		free(curr_entry);
+		curr_entry = NULL;
+		i++;
+	}
+	free((*lem)->ht->entries);
+	free((*lem)->ht);
+	free((*lem));
+//	if ((*lem)->ht)
+//		free_hash_table(lem);
+//	if (*lem)
+//	{
+//		(*lem)->names ? free((*lem)->names) : 0;
+//		(*lem)->start ? free((*lem)->start) : 0;
+//		(*lem)->end ? free((*lem)->end) : 0;
+//		free(*lem);
+//	}
 	return (1);
 }
 

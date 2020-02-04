@@ -16,6 +16,8 @@ size_t		ft_check_end_spaces(const char *s, size_t size)
 {
 	size_t	i;
 
+	if (!s)
+		return (0);
 	if (size == 0)
 		return (0);
 	i = size - 1;

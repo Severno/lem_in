@@ -267,6 +267,9 @@
 		<Unit filename="/Users/sapril/lem_in/libft/src/get_next_line.c">
 			<Option target="lem_in"/>
 		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/bfs.c">
+			<Option target="lem_in"/>
+		</Unit>
 		<Unit filename="/Users/sapril/lem_in/src/free_data.c">
 			<Option target="lem_in"/>
 		</Unit>
@@ -278,6 +281,9 @@
 			<Option target="lem_in"/>
 		</Unit>
 		<Unit filename="/Users/sapril/lem_in/src/lem_in.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/queue.c">
 			<Option target="lem_in"/>
 		</Unit>
 		<Unit filename="/Users/sapril/lem_in/src/read_map.c">

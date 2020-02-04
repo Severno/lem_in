@@ -6,11 +6,27 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 09:50:58 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/03 19:38:01 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/04 18:20:23 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+// VALIDATION
+
+//Map must have a valid number of ants: 1 <= number of ants <= INT_MAX.
+//
+//Map must have the start and the end rooms.
+//
+//Map must have no rooms with the same names. Each room name must be unique.
+//
+//Map must have no rooms with the same coordinates.
+//
+//Map must have one or more links.
+//
+//Each link must have valid names of the start and the end rooms. It means that rooms with these names are present in map file.
+//
+//Map must have no duplicates of links. There are no links that connect the same points.
 
 void			add_link(t_lem *lem, char *lines, char **split_str)
 {
@@ -21,6 +37,7 @@ void			add_link(t_lem *lem, char *lines, char **split_str)
 	free_split_str(&split_str);
 	split_connections = ft_strsplit(lines, '-');
 	free(lines);
+	lines = NULL;
 	if (is_connection(lem, split_connections))
 	{
 		from = ht_get(lem->ht, split_connections[0]);
@@ -37,8 +54,12 @@ void			add_el_to_hash_map(t_lem *lem, char **lines, char **split_str)
 
 	new_room = create_room(&split_str[0], ft_atoi(split_str[1]), ft_atoi(split_str[2]));
 	ht_set(lem->ht, split_str[0], &new_room);
+	lem->names = ft_strjoin(lem->names, split_str[0]);
+	lem->names = ft_strjoin(lem->names, "\n");
+	lem->rooms_cap++;
 	free_split_str(&split_str);
 	free(*lines);
+	*lines = NULL;
 }
 
 void			add_start_or_end(t_lem *lem, char **split_str, char **lines)
@@ -62,6 +83,9 @@ void			add_start_or_end(t_lem *lem, char **split_str, char **lines)
 	}
 	new_room = create_room(&split_str[0], ft_atoi(split_str[1]), ft_atoi(split_str[2]));
 	ht_set(lem->ht, split_str[0], &new_room);
+	lem->names = ft_strjoin(lem->names, split_str[0]);
+	lem->names = ft_strjoin(lem->names, "\n");
+	lem->rooms_cap++;
 	free(*lines);
 	free(tmp_dest);
 }
@@ -80,6 +104,8 @@ void		get_info(t_lem *lem, char *file_name)
 {
 	char	*lines;
 	char	**split_str;
+	
+	(void)file_name;
 
 	while (get_next_line(lem->fd, &lines) > 0)
 	{

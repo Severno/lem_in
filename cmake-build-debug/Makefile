@@ -1405,6 +1405,33 @@ libft/src/get_next_line.c.s:
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/libft/src/get_next_line.c.s
 .PHONY : libft/src/get_next_line.c.s
 
+src/bfs.o: src/bfs.c.o
+
+.PHONY : src/bfs.o
+
+# target to build an object file
+src/bfs.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/bfs.c.o
+.PHONY : src/bfs.c.o
+
+src/bfs.i: src/bfs.c.i
+
+.PHONY : src/bfs.i
+
+# target to preprocess a source file
+src/bfs.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/bfs.c.i
+.PHONY : src/bfs.c.i
+
+src/bfs.s: src/bfs.c.s
+
+.PHONY : src/bfs.s
+
+# target to generate assembly for a file
+src/bfs.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/bfs.c.s
+.PHONY : src/bfs.c.s
+
 src/free_data.o: src/free_data.c.o
 
 .PHONY : src/free_data.o
@@ -1515,6 +1542,33 @@ src/lem_in.s: src/lem_in.c.s
 src/lem_in.c.s:
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/lem_in.c.s
 .PHONY : src/lem_in.c.s
+
+src/queue.o: src/queue.c.o
+
+.PHONY : src/queue.o
+
+# target to build an object file
+src/queue.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/queue.c.o
+.PHONY : src/queue.c.o
+
+src/queue.i: src/queue.c.i
+
+.PHONY : src/queue.i
+
+# target to preprocess a source file
+src/queue.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/queue.c.i
+.PHONY : src/queue.c.i
+
+src/queue.s: src/queue.c.s
+
+.PHONY : src/queue.s
+
+# target to generate assembly for a file
+src/queue.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/queue.c.s
+.PHONY : src/queue.c.s
 
 src/read_map.o: src/read_map.c.o
 
@@ -1721,6 +1775,9 @@ help:
 	@echo "... libft/src/get_next_line.o"
 	@echo "... libft/src/get_next_line.i"
 	@echo "... libft/src/get_next_line.s"
+	@echo "... src/bfs.o"
+	@echo "... src/bfs.i"
+	@echo "... src/bfs.s"
 	@echo "... src/free_data.o"
 	@echo "... src/free_data.i"
 	@echo "... src/free_data.s"
@@ -1733,6 +1790,9 @@ help:
 	@echo "... src/lem_in.o"
 	@echo "... src/lem_in.i"
 	@echo "... src/lem_in.s"
+	@echo "... src/queue.o"
+	@echo "... src/queue.i"
+	@echo "... src/queue.s"
 	@echo "... src/read_map.o"
 	@echo "... src/read_map.i"
 	@echo "... src/read_map.s"
