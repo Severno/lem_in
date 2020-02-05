@@ -6,164 +6,62 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 11:16:29 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/04 18:52:30 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/05 13:00:03 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void			free_room_links(t_room **room)
-{
-	int in_count;
-	int out_count;
-
-	in_count = 0;
-	out_count = 0;
-	while (in_count < (*room)->in_degree)
-	{
-		free((*room)->in_links[in_count]);
-		in_count++;
-	}
-	while (out_count < (*room)->out_degree)
-	{
-		free((*room)->out_links[out_count]);
-		out_count++;
-	}
-}
-
-void			free_hash_table_entries(t_lem **lem, t_room *check_room, unsigned long slot)
-{
-	int j;
-
-	j = 0;
-	while (j < MIN_LINKS)
-	{
-		if (check_room)
-		{
-			if ((*lem)->ht->entries[slot]->value->out_links[j] != (*lem)->ht->entries[slot]->value->in_links[j])
-			{
-				free((*lem)->ht->entries[slot]->value->out_links[j]);
-				(*lem)->ht->entries[slot]->value->out_links[j] = NULL;
-				free((*lem)->ht->entries[slot]->value->in_links[j]);
-				(*lem)->ht->entries[slot]->value->in_links[j] = NULL;
-			}
-		}
-		j++;
-	}
-}
-
-void				free_hash_table_main(unsigned long slot, t_lem **lem)
-{
-	free((*lem)->ht->entries[slot]->value->out_links);
-	free((*lem)->ht->entries[slot]->value->in_links);
-	free((*lem)->ht->entries[slot]->value->name);
-	free((*lem)->ht->entries[slot]->value);
-	free((*lem)->ht->entries[slot]->key);
-	free((*lem)->ht->entries[slot]);
-}
-
-void				free_hash_table(t_lem **lem)
-{
-	char			**split_names;
-	t_room			*check_room;
-	unsigned long	slot;
-	int				i;
-
-	i = 0;
-	split_names = ft_strsplit((*lem)->names, '\n');
-	while (split_names[i])
-	{
-		slot = hash(split_names[i]);
-		check_room = ht_get((*lem)->ht, split_names[i]);
-//		free_room_links(&(*lem)->ht->entries[slot]->value);
-//		free_hash_table_entries(lem, check_room, slot);
-		free_hash_table_main(slot, lem);
-		i++;
-	}
-	free((*lem)->ht->entries);
-	free((*lem)->ht);
-	free_split_str(&split_names);
-}
-
-void free_links(t_room **curr_room)
-{
-	int i;
-
-	i = 0;
-	while (i < MIN_LINKS)
-		(*curr_room)->in_links[i++] = NULL;
-	i = 0;
-	while (i < MIN_LINKS)
-		free((*curr_room)->in_links[i++]);
-	free((*curr_room)->in_links);
-	(*curr_room)->in_links = NULL;
-	i = 0;
-	while (i < MIN_LINKS)
-		(*curr_room)->out_links[i++] = NULL;
-	i = 0;
-	while (i < MIN_LINKS)
-		free((*curr_room)->out_links[i++]);
-	free((*curr_room)->out_links);
-	(*curr_room)->out_links = NULL;
-}
+int freed_in = 0;
+int freed_out = 0;
+int freed_rooms = 0;
 
 int				free_data(t_lem **lem)
 {
-	char **names_split;
-	t_entry *curr_entry;
-	t_room *curr_room;
 	int i;
 
-	names_split = ft_strsplit((*lem)->names, '\n');
 	i = 0;
-	while (names_split[i])
-	{
-		curr_entry = (*lem)->ht->entries[hash(names_split[i])];
-		curr_room = curr_entry->value;
-		free_links(&curr_room);
-		i++;
-	}
-	i = 0;
-	while (names_split[i])
-	{
-		curr_entry = (*lem)->ht->entries[hash(names_split[i])];
-		free(curr_entry->value);
-		curr_entry->value = NULL;
-		i++;
-	}
-	while (names_split[i])
-	{
-		curr_entry = (*lem)->ht->entries[hash(names_split[i])];
-		free(curr_entry);
-		curr_entry = NULL;
-		i++;
-	}
-	free((*lem)->ht->entries);
-	free((*lem)->ht);
-	free((*lem));
-//	if ((*lem)->ht)
-//		free_hash_table(lem);
-//	if (*lem)
-//	{
-//		(*lem)->names ? free((*lem)->names) : 0;
-//		(*lem)->start ? free((*lem)->start) : 0;
-//		(*lem)->end ? free((*lem)->end) : 0;
-//		free(*lem);
-//	}
+	while (i < TABLE_SIZE)
+		free_entries(lem, i++);
+	free_lem(lem);
 	return (1);
 }
 
-void				free_split_str(char ***tab)
+void 			free_entries(t_lem **lem, int i)
 {
-	int		i;
+	t_entry	*entry;
+	char	**in_links;
+	char	**out_links;
 
-	i = 0;
-	while ((*tab)[i])
+	if ((*lem)->ht->entries[i])
 	{
-		if ((*tab)[i] != NULL)
-			free((*tab)[i]);
-		i++;
+		entry = (*lem)->ht->entries[i];
+		if (entry->value)
+		{
+			in_links = entry->value->in_link;
+			out_links = entry->value->out_link;
+			free_str_links(&in_links, &out_links);
+			free_entry(&entry);
+//			ft_printf("freed rooms = %d\n", ++freed_rooms);
+		}
 	}
-	free(*tab);
-	*tab = 0;
+	free((*lem)->ht->entries[i]);
+	(*lem)->ht->entries[i] = NULL;
+}
+
+void			free_entry(t_entry **entry)
+{
+	free((*entry)->value->name);
+	free((*entry)->value);
+	free((*entry)->key);
+}
+
+void			free_lem(t_lem **lem)
+{
+	free((*lem)->ht->entries);
+	free((*lem)->ht);
+	free((*lem)->names);
+	free((*lem)->end);
+	free((*lem)->start);
+	free((*lem));
 }

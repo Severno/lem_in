@@ -3,7 +3,7 @@
 # include "../libft/includes/libft.h"
 # define TABLE_SIZE 100000
 # define NICE_PRIME_NUMBER 37
-# define MIN_LINKS 10
+# define MIN_LINKS 30
 # define QUEUE_SIZE 5000
 # define X 0
 # define Y 1
@@ -29,6 +29,8 @@ typedef struct		s_room
 	int				out_degree;
 	struct s_room	**in_links;
 	struct s_room	**out_links;
+	char			**in_link;
+	char			**out_link;
 	int				bfs_lvl;
 
 }					t_room;
@@ -93,16 +95,29 @@ void				ht_print(t_ht *hashtable);
 //void				display(t_queue *queue);
 
 // queue linked list
-t_queue		*queue_create();
-t_qnode		*queue_new_node(t_room *room);
-void		enqueue(t_queue *queue, t_room *room);
-void		dequeue(t_queue *queue);
-t_qnode		*queue_get_front(t_queue **queue);
+t_queue				*queue_create();
+t_qnode				*queue_new_node(t_room *room);
+void				enqueue(t_queue *queue, t_room *room);
+t_qnode				*dequeue(t_queue *queue);
+t_qnode				*queue_get_front(t_queue **queue);
+void				print_queue(t_queue *queue);
 
 // bfs
-t_ht		*create_seen(int size);
-void		bfs_set_lvl(t_lem *lem, t_room *start);
-void		free_seen(t_lem *lem, t_ht *seen);
+t_ht				*create_seen();
+void				bfs_set_lvl(t_lem *lem, t_room *start);
+void				free_seen(t_lem **lem, t_ht **seen);
+
+// link_optimization
+int					get_pos_link_out(char **out_links, char *in_link, int out_degree);
+void				remove_dead_link(t_lem *lem, t_room *dead_room);
+int					get_pos_link_in(char **in_links, char *out_link, int in_degree);
+void				delete_current_link(t_room *from, t_room *to, int out_pos, int in_pos);
+void				delete_useless_links(t_lem *lem, t_room *start);
+
+// printing
+void				print_ht_seen(t_ht *seen);
+void				print_links(t_lem *lem);
+void				print_rooms(t_lem *lem);
 
 //lemin
 t_room				*create_room(char **name, int x, int y);
@@ -115,10 +130,14 @@ void				add_start_or_end(t_lem *lem, char **split_str, char **lines);
 int					check_coord_valid(char *x, char *y);
 
 // free data
-void				free_hash_table_entries(t_lem **lem, t_room *check_room, unsigned long slot);
-void				free_hash_table_main(unsigned long slot, t_lem **lem);
-void				free_hash_table(t_lem **lem);
 int					free_data(t_lem **lem);
+void 				free_entries(t_lem **lem, int i);
+void				free_lem(t_lem **lem);
+void				free_entry(t_entry **entry);
+
+// free data2
+void				free_seen(t_lem **lem, t_ht **seen);
+void				free_str_links(char ***in_links, char ***out_links);
 void				free_split_str(char ***tab);
 
 // validation

@@ -58,6 +58,9 @@ add_executable(lem_in
         src/validation.c
         src/queue.c
         src/bfs.c
+        src/link_optimization.c
+        src/printing.c
+        src/free_data2.c
         libft/src/get_next_line.c
         )
 

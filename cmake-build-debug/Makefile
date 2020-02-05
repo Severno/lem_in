@@ -1459,6 +1459,33 @@ src/free_data.c.s:
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/free_data.c.s
 .PHONY : src/free_data.c.s
 
+src/free_data2.o: src/free_data2.c.o
+
+.PHONY : src/free_data2.o
+
+# target to build an object file
+src/free_data2.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/free_data2.c.o
+.PHONY : src/free_data2.c.o
+
+src/free_data2.i: src/free_data2.c.i
+
+.PHONY : src/free_data2.i
+
+# target to preprocess a source file
+src/free_data2.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/free_data2.c.i
+.PHONY : src/free_data2.c.i
+
+src/free_data2.s: src/free_data2.c.s
+
+.PHONY : src/free_data2.s
+
+# target to generate assembly for a file
+src/free_data2.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/free_data2.c.s
+.PHONY : src/free_data2.c.s
+
 src/get_info.o: src/get_info.c.o
 
 .PHONY : src/get_info.o
@@ -1542,6 +1569,60 @@ src/lem_in.s: src/lem_in.c.s
 src/lem_in.c.s:
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/lem_in.c.s
 .PHONY : src/lem_in.c.s
+
+src/link_optimization.o: src/link_optimization.c.o
+
+.PHONY : src/link_optimization.o
+
+# target to build an object file
+src/link_optimization.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/link_optimization.c.o
+.PHONY : src/link_optimization.c.o
+
+src/link_optimization.i: src/link_optimization.c.i
+
+.PHONY : src/link_optimization.i
+
+# target to preprocess a source file
+src/link_optimization.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/link_optimization.c.i
+.PHONY : src/link_optimization.c.i
+
+src/link_optimization.s: src/link_optimization.c.s
+
+.PHONY : src/link_optimization.s
+
+# target to generate assembly for a file
+src/link_optimization.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/link_optimization.c.s
+.PHONY : src/link_optimization.c.s
+
+src/printing.o: src/printing.c.o
+
+.PHONY : src/printing.o
+
+# target to build an object file
+src/printing.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/printing.c.o
+.PHONY : src/printing.c.o
+
+src/printing.i: src/printing.c.i
+
+.PHONY : src/printing.i
+
+# target to preprocess a source file
+src/printing.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/printing.c.i
+.PHONY : src/printing.c.i
+
+src/printing.s: src/printing.c.s
+
+.PHONY : src/printing.s
+
+# target to generate assembly for a file
+src/printing.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/printing.c.s
+.PHONY : src/printing.c.s
 
 src/queue.o: src/queue.c.o
 
@@ -1781,6 +1862,9 @@ help:
 	@echo "... src/free_data.o"
 	@echo "... src/free_data.i"
 	@echo "... src/free_data.s"
+	@echo "... src/free_data2.o"
+	@echo "... src/free_data2.i"
+	@echo "... src/free_data2.s"
 	@echo "... src/get_info.o"
 	@echo "... src/get_info.i"
 	@echo "... src/get_info.s"
@@ -1790,6 +1874,12 @@ help:
 	@echo "... src/lem_in.o"
 	@echo "... src/lem_in.i"
 	@echo "... src/lem_in.s"
+	@echo "... src/link_optimization.o"
+	@echo "... src/link_optimization.i"
+	@echo "... src/link_optimization.s"
+	@echo "... src/printing.o"
+	@echo "... src/printing.i"
+	@echo "... src/printing.s"
 	@echo "... src/queue.o"
 	@echo "... src/queue.i"
 	@echo "... src/queue.s"

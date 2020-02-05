@@ -20,7 +20,7 @@ CYAN_IN:=\033[1;36m
 WHITE_IN:=\033[1;37m
 # ==================
 
-FILES = free_data get_info hashmap lem_in read_map validation bfs queue
+FILES = free_data get_info hashmap lem_in read_map validation bfs queue link_optimization printing free_data2
 
 
 FILES_LEM_IN= $(filter-out checker, $(FILES))

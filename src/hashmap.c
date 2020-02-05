@@ -6,11 +6,13 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 09:15:32 by sapril            #+#    #+#             */
-/*   Updated: 2020/01/29 17:07:55 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/05 14:37:22 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+int glob_ht_pair_count = 0;
 
 unsigned long		hash(const char *key)
 {
@@ -61,8 +63,10 @@ void				ht_set(t_ht *hashtable, const char *key, t_room **value)
 
 	slot = hash(key);
 	entry = hashtable->entries[slot];
-	if (entry == NULL)
+	if (entry == NULL || entry->key == NULL)
 	{
+//		ft_printf("glob_ht_count = %d, value edding in NULL = %s\n", glob_ht_pair_count + 1, (*value)->name);
+		glob_ht_pair_count++;
 		hashtable->entries[slot] = ht_pair(key, value);
 		return ;
 	}
@@ -79,6 +83,8 @@ void				ht_set(t_ht *hashtable, const char *key, t_room **value)
 		entry = prev->next;
 //		prev->next = entry;
 	}
+//	ft_printf("glob_ht_count = %d, value edding = %s\n", glob_ht_pair_count, (*value)->name);
+	glob_ht_pair_count++;
 	prev->next = ht_pair(key, value);
 }
 
@@ -87,11 +93,13 @@ t_room		*ht_get(t_ht *hashtable, const char *key)
 	unsigned long	slot;
 	t_entry 		*entry;
 
+	if (key == NULL)
+		return (NULL);
 	slot = hash(key);
 	entry = hashtable->entries[slot];
 	if (entry == NULL)
 		return (NULL);
-	while (entry != NULL)
+	while (entry != NULL && entry->key != NULL)
 	{
 		if (ft_strcmp(entry->key, key) == 0)
 			return (entry->value);
@@ -132,22 +140,3 @@ void	ht_print(t_ht *hashtable)
 		i++;
 	}
 }
-
-//int main()
-//{
-//	t_ht *ht = ht_create();
-//	int arr[2] = {1,2};
-//	int arr1[2] = {112233,99};
-//	int arr2[2] = {0,212321};
-//	int arr3[2] = {123,222};
-//	int arr4[2] = {10,20};
-//	int arr5[2] = {42,33};
-//	ht_set(ht, "name1", arr);
-//	ht_set(ht, "name2", arr1);
-//	ht_set(ht, "name3", arr2);
-//	ht_set(ht, "name4", arr3);
-//	ht_set(ht, "name5", arr4);
-//	ht_set(ht, "name6", arr5);
-//	ht_print(ht);
-//	return (0);
-//}

@@ -265,6 +265,13 @@ CMakeFiles/lem_in.dir/src/free_data.c.o: ../libft/includes/libft.h
 CMakeFiles/lem_in.dir/src/free_data.c.o: ../libft/includes/sort_algs.h
 CMakeFiles/lem_in.dir/src/free_data.c.o: ../src/free_data.c
 
+CMakeFiles/lem_in.dir/src/free_data2.c.o: ../includes/lem_in.h
+CMakeFiles/lem_in.dir/src/free_data2.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/lem_in.dir/src/free_data2.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/lem_in.dir/src/free_data2.c.o: ../libft/includes/libft.h
+CMakeFiles/lem_in.dir/src/free_data2.c.o: ../libft/includes/sort_algs.h
+CMakeFiles/lem_in.dir/src/free_data2.c.o: ../src/free_data2.c
+
 CMakeFiles/lem_in.dir/src/get_info.c.o: ../includes/lem_in.h
 CMakeFiles/lem_in.dir/src/get_info.c.o: ../libft/includes/ft_printf.h
 CMakeFiles/lem_in.dir/src/get_info.c.o: ../libft/includes/get_next_line.h
@@ -285,6 +292,20 @@ CMakeFiles/lem_in.dir/src/lem_in.c.o: ../libft/includes/get_next_line.h
 CMakeFiles/lem_in.dir/src/lem_in.c.o: ../libft/includes/libft.h
 CMakeFiles/lem_in.dir/src/lem_in.c.o: ../libft/includes/sort_algs.h
 CMakeFiles/lem_in.dir/src/lem_in.c.o: ../src/lem_in.c
+
+CMakeFiles/lem_in.dir/src/link_optimization.c.o: ../includes/lem_in.h
+CMakeFiles/lem_in.dir/src/link_optimization.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/lem_in.dir/src/link_optimization.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/lem_in.dir/src/link_optimization.c.o: ../libft/includes/libft.h
+CMakeFiles/lem_in.dir/src/link_optimization.c.o: ../libft/includes/sort_algs.h
+CMakeFiles/lem_in.dir/src/link_optimization.c.o: ../src/link_optimization.c
+
+CMakeFiles/lem_in.dir/src/printing.c.o: ../includes/lem_in.h
+CMakeFiles/lem_in.dir/src/printing.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/lem_in.dir/src/printing.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/lem_in.dir/src/printing.c.o: ../libft/includes/libft.h
+CMakeFiles/lem_in.dir/src/printing.c.o: ../libft/includes/sort_algs.h
+CMakeFiles/lem_in.dir/src/printing.c.o: ../src/printing.c
 
 CMakeFiles/lem_in.dir/src/queue.c.o: ../includes/lem_in.h
 CMakeFiles/lem_in.dir/src/queue.c.o: ../libft/includes/ft_printf.h

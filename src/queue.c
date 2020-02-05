@@ -56,6 +56,24 @@
 
 //QUEUE LINKED LIST
 
+void print_queue(t_queue *queue)
+{
+	t_qnode *tmp;
+
+	tmp = queue->front;
+	ft_putstr(RED);
+	ft_printf("Current queue");
+
+	while (tmp)
+	{
+		if (tmp->room && tmp->room->name)
+			ft_printf(" %s", tmp->room->name);
+		tmp = tmp->next;
+	}
+	ft_putstr(RESET);
+	ft_putchar('\n');
+}
+
 t_qnode		*queue_get_front(t_queue **queue)
 {
 	t_qnode		*node;
@@ -116,15 +134,21 @@ void		enqueue(t_queue *queue, t_room *room)
 	queue->rear = tmp;
 }
 
-void		dequeue(t_queue *queue)
+t_qnode		*dequeue(t_queue *queue)
 {
 	t_qnode *tmp;
 
-	if (queue->front == NULL)
-		return;
-	tmp = queue->front;
-	queue->front = queue->front->next;
-	if (queue->front == NULL)
+	if (queue->front && queue->front->next)
+	{
+		tmp = queue->front;
+		queue->front = queue->front->next;
+		return (tmp);
+	}
+	if (queue->front && !queue->front->next)
+	{
+		tmp = queue->front;
+		queue->front = NULL;
 		queue->rear = NULL;
-	free(tmp);
+		return (tmp);
+	}
 }

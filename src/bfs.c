@@ -1,44 +1,38 @@
 #include "../includes/lem_in.h"
 
-void free_seen(t_lem *lem, t_ht *seen)
-{
-	int i;
+int malloc_entries = 0;
+int freed_entries = 0;
 
-	i = 0;
-	while (i < lem->rooms_cap)
-		free(seen->entries[i++]);
-	free(seen->entries);
-}
-
-t_ht		*create_seen(int size)
+t_ht		*create_seen()
 {
 	t_ht *new_ht;
 	int i;
 
 	if (!(new_ht = ft_memalloc(sizeof(t_ht))))
 		return (NULL);
-	if (!(new_ht->entries = ft_memalloc(sizeof(t_entry *) * size + 20)))
+	if (!(new_ht->entries = ft_memalloc(sizeof(t_entry *) * (TABLE_SIZE))))
 		return (NULL);
 	i = 0;
-	while (i < size + 20)
+	while (i < TABLE_SIZE)
+	{
 		new_ht->entries[i++] = ft_memalloc(sizeof(t_entry));
+		malloc_entries++;
+	}
 	return (new_ht);
 }
 
-void set_bfs_lvl(t_lem *lem, t_qnode *current, int	out_degree)
+void set_bfs_lvl(t_lem *lem, t_qnode *current, int	out_degree, t_ht *ht)
 {
-	int in_degree;
-	int min_bfs_level;
+	t_room *curr_room;
 
-	in_degree = 0;
-	min_bfs_level = -1;
-	if (ft_strequ(current->room->out_links[out_degree]->name, lem->end))
-		current->room->out_links[out_degree]->bfs_lvl = MAX_INTEGER;
-	if (current->room->out_links[out_degree]->bfs_lvl == -1
-		&& current->room->out_links[out_degree]->in_links)
-		current->room->out_links[out_degree]->bfs_lvl = current->room->bfs_lvl + 1;
+	curr_room = ht_get(lem->ht, current->room->out_link[out_degree]);
+	if (ft_strequ(curr_room->name, lem->end))
+		curr_room->bfs_lvl = MAX_INTEGER;
+	if (curr_room->bfs_lvl == -1)
+		curr_room->bfs_lvl = current->room->bfs_lvl + 1;
 
 }
+
 
 void		bfs_set_lvl(t_lem *lem, t_room *start)
 {
@@ -46,31 +40,45 @@ void		bfs_set_lvl(t_lem *lem, t_room *start)
 	t_queue	*queue;
 	t_qnode *current;
 	int		out_degree;
-	int		bfs_lvl;
 
 	out_degree = 0;
-	bfs_lvl = 1;
-	seen = create_seen(lem->rooms_cap);
+	seen = create_seen();
 	queue = queue_create();
 	enqueue(queue, start);
 	start->bfs_lvl = 0;
 	while (queue->front)
 	{
-		current = queue_get_front(&queue);
-		if (!ht_get(seen, current->room->name))
+//		print_queue(queue);
+//		print_ht_seen(seen);
+		current = dequeue(queue);
+		if (!current || !current->room->name)
+			continue;
+//		print_queue(queue);
+//		print_ht_seen(seen);
+//		ft_printf(BLUE"Current working %s \n"RESET, current->room->name);
+		if (!ht_get(seen, current->room->name)) // проверяем есть ли в просмотренных
 		{
-			ht_set(seen, current->room->name, &current->room);
+			ht_set(seen, current->room->name, &current->room); // если нет, добавляем в просмотренные
 			ft_printf("Current node = %s, bfs_lvl = %d\n", current->room->name, current->room->bfs_lvl);
-			while (current->room->out_links[out_degree]->name != NULL)
+			while (out_degree < current->room->out_degree) // смотрим все исходящие ссылки из текущий комнаты
 			{
-				set_bfs_lvl(lem, current, out_degree);
-				if (!ht_get(seen, current->room->out_links[out_degree]->name))
-					enqueue(queue, current->room->out_links[out_degree]);
-				ft_printf("Current node = %s, bfs_lvl = %d\n", current->room->out_links[out_degree]->name, current->room->out_links[out_degree]->bfs_lvl);
+				set_bfs_lvl(lem, current, out_degree, lem->ht);
+				if (!ht_get(seen, current->room->out_link[out_degree])) // если его нет в просмотренном добавляем в очередь
+					enqueue(queue, ht_get(lem->ht, current->room->out_link[out_degree]));
+//				print_queue(queue);
+//				print_ht_seen(seen);
+				ft_printf("Current node = %s, bfs_lvl = %d\n", current->room->out_link[out_degree], ht_get(lem->ht, current->room->out_link[out_degree])->bfs_lvl);
 				out_degree++;
 			}
 		}
+//		print_queue(queue);
+//		print_ht_seen(seen);
+		free(current);
 		out_degree = 0;
 	}
-	free_seen(lem, seen);
+	free(queue);
+	free_seen(&lem, &seen);
+	ft_printf("Malloc entries %d\n", malloc_entries);
+	ft_printf("Freed entries %d\n", freed_entries);
+	delete_useless_links(lem, start);
 }
