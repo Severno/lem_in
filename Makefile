@@ -20,7 +20,8 @@ CYAN_IN:=\033[1;36m
 WHITE_IN:=\033[1;37m
 # ==================
 
-FILES = free_data get_info hashmap lem_in read_map validation bfs queue link_optimization printing free_data2
+FILES = bfs free_data free_data2 get_info \
+        hashmap lem_in link_optimization printing queue read_map validation
 
 
 FILES_LEM_IN= $(filter-out checker, $(FILES))
@@ -40,7 +41,7 @@ CACHE=.cache_exists
 all: libft_make $(LEM_IN)
 
 libft_make:
-	@cd libft/; make; cp libft.a ..;
+	@cd libft/; make; cp libft.a ..; cd ..;
 
 $(LEM_IN): $(OBJ_LEM_IN) $(LIBFT_NAME)
 	gcc $(OBJ_LEM_IN) $(LIBFT_NAME) -o $(LEM_IN)

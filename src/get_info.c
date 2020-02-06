@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 09:50:58 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/05 11:37:12 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/06 17:25:17 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void			add_link(t_lem *lem, char *lines, char **split_str)
 void			add_el_to_hash_map(t_lem *lem, char **lines, char **split_str)
 {
 	t_room	*new_room;
-	char	*tmp_clone;
 
 	new_room = create_room(&split_str[0], ft_atoi(split_str[1]), ft_atoi(split_str[2]));
 	ht_set(lem->ht, split_str[0], &new_room);
@@ -88,7 +87,6 @@ void			add_start_or_end(t_lem *lem, char **split_str, char **lines)
 {
 	char	*tmp_dest;
 	t_room	*new_room;
-	char	*tmp_clone;
 
 	tmp_dest = ft_strdup(*lines);
 	free(*lines);

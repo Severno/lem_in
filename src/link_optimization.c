@@ -136,7 +136,7 @@ void	delete_useless_links(t_lem *lem, t_room *start)
 		out_degree = 0;
 	}
 	free(queue);
-	free_seen(&lem, &seen);
+	free_seen(&seen);
 //	ft_printf("Malloc entries %d\n", malloc_entries);
 //	ft_printf("Freed entries %d\n", freed_entries);
 }

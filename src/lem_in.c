@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:17:21 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/05 16:21:43 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/06 17:42:47 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ int			main(int argc, char *argv[])
 	(void)argc;
 	(void)argv;
 	lem = create_lem_in();
-	lem->fd = open("../maps/test.map", O_RDONLY);
-	get_info(lem, "../maps/test.map");
+	lem->fd = open("../maps/test2.map", O_RDONLY);
+	get_info(lem, "../maps/test2.map");
 //	ft_putstr(lem->names);
 	ht_print(lem->ht);
 //	ft_printf("start = %s\n", lem->start);

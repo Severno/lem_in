@@ -21,7 +21,7 @@ t_ht		*create_seen()
 	return (new_ht);
 }
 
-void set_bfs_lvl(t_lem *lem, t_qnode *current, int	out_degree, t_ht *ht)
+void set_bfs_lvl(t_lem *lem, t_qnode *current, int	out_degree)
 {
 	t_room *curr_room;
 
@@ -62,7 +62,7 @@ void		bfs_set_lvl(t_lem *lem, t_room *start)
 			ft_printf("Current node = %s, bfs_lvl = %d\n", current->room->name, current->room->bfs_lvl);
 			while (out_degree < current->room->out_degree) // смотрим все исходящие ссылки из текущий комнаты
 			{
-				set_bfs_lvl(lem, current, out_degree, lem->ht);
+				set_bfs_lvl(lem, current, out_degree);
 				if (!ht_get(seen, current->room->out_link[out_degree])) // если его нет в просмотренном добавляем в очередь
 					enqueue(queue, ht_get(lem->ht, current->room->out_link[out_degree]));
 //				print_queue(queue);
@@ -77,7 +77,7 @@ void		bfs_set_lvl(t_lem *lem, t_room *start)
 		out_degree = 0;
 	}
 	free(queue);
-	free_seen(&lem, &seen);
+	free_seen(&seen);
 	ft_printf("Malloc entries %d\n", malloc_entries);
 	ft_printf("Freed entries %d\n", freed_entries);
 	delete_useless_links(lem, start);

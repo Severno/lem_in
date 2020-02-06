@@ -12,7 +12,7 @@
 
 #include "../includes/lem_in.h"
 
-void free_seen(t_lem **lem, t_ht **seen)
+void free_seen(t_ht **seen)
 {
 	int i;
 

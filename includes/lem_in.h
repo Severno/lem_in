@@ -105,7 +105,6 @@ void				print_queue(t_queue *queue);
 // bfs
 t_ht				*create_seen();
 void				bfs_set_lvl(t_lem *lem, t_room *start);
-void				free_seen(t_lem **lem, t_ht **seen);
 
 // link_optimization
 int					get_pos_link_out(char **out_links, char *in_link, int out_degree);
@@ -136,7 +135,7 @@ void				free_lem(t_lem **lem);
 void				free_entry(t_entry **entry);
 
 // free data2
-void				free_seen(t_lem **lem, t_ht **seen);
+void				free_seen(t_ht **seen);
 void				free_str_links(char ***in_links, char ***out_links);
 void				free_split_str(char ***tab);
 

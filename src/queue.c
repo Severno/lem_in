@@ -151,4 +151,5 @@ t_qnode		*dequeue(t_queue *queue)
 		queue->rear = NULL;
 		return (tmp);
 	}
+	return (NULL);
 }
