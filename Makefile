@@ -62,7 +62,7 @@ clean:
 
 fclean: clean
 	cd libft/; make fclean; cd ..;
-	rm checker push_swap
+	rm lem-in
 	rm libft.a
 
 re: fclean

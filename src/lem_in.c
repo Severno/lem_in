@@ -89,8 +89,8 @@ int			main(int argc, char *argv[])
 	(void)argc;
 	(void)argv;
 	lem = create_lem_in();
-	lem->fd = open("../maps/test2.map", O_RDONLY);
-	get_info(lem, "../maps/test2.map");
+	lem->fd = open("maps/test2.map", O_RDONLY);
+	get_info(lem, "maps/test2.map");
 //	ft_putstr(lem->names);
 	ht_print(lem->ht);
 //	ft_printf("start = %s\n", lem->start);
