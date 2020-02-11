@@ -21,7 +21,10 @@ WHITE_IN:=\033[1;37m
 # ==================
 
 FILES = bfs free_data free_data2 get_info \
-        hashmap lem_in link_optimization printing queue read_map validation
+        hashmap lem_in link_optimization printing \
+        queue read_map validation room_utils \
+        ants
+
 
 
 FILES_LEM_IN= $(filter-out checker, $(FILES))

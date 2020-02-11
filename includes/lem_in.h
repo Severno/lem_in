@@ -17,6 +17,13 @@
 # define CLR "\e[1;1H\e[2J"
 # define WHITE   "\x1B[37m"
 
+struct		s_room;
+struct		s_entry;
+struct		s_hash_table;
+struct		s_qnode;
+struct		s_queue;
+struct		s_lem;
+
 typedef struct		s_room
 {
 	char			*name;
@@ -27,12 +34,13 @@ typedef struct		s_room
 	char			*end;
 	int				in_degree;
 	int				out_degree;
-	struct s_room	**in_links;
-	struct s_room	**out_links;
 	char			**in_link;
 	char			**out_link;
 	int				bfs_lvl;
-
+	struct s_room	*next;
+	struct s_room	*prev;
+	int				ant_number;
+	int				ant_is_here;
 }					t_room;
 
 typedef struct		s_entry
@@ -104,7 +112,9 @@ void				print_queue(t_queue *queue);
 
 // bfs
 t_ht				*create_seen();
-void				bfs_set_lvl(t_lem *lem, t_room *start);
+void				bfs_set_lvl(t_lem *lem, t_room *start, char *end);
+void				reverse_set_bfs_lvl(t_lem *lem, t_qnode *current, int	in_degree, char *end);
+void				reverse_bfs_set_lel(t_lem *lem, t_room *start, char *end);
 
 // link_optimization
 int					get_pos_link_out(char **out_links, char *in_link, int out_degree);
@@ -112,11 +122,18 @@ void				remove_dead_link(t_lem *lem, t_room *dead_room);
 int					get_pos_link_in(char **in_links, char *out_link, int in_degree);
 void				delete_current_link(t_room *from, t_room *to, int out_pos, int in_pos);
 void				delete_useless_links(t_lem *lem, t_room *start);
+void				delete_input_links(t_lem *lem, t_room *start);
+void				delete_cur_output_link(t_room *curr_room, t_room *next_room, t_lem *lem);
+void				delete_output_links(t_lem *lem, t_room *start);
 
 // printing
 void				print_ht_seen(t_ht *seen);
 void				print_links(t_lem *lem);
 void				print_rooms(t_lem *lem);
+void				print_paths(t_lem *lem, t_room *start);
+void				next_search_linked_list(t_lem *lem, t_room *cur_room);
+void				print_paths_linked_list(t_lem *lem, t_room *start);
+void				print_current_room_state(t_lem *lem, t_room *start, int bfs_level, int ants);
 
 //lemin
 t_room				*create_room(char **name, int x, int y);
@@ -146,4 +163,11 @@ int					is_connection(t_lem *lem, char **split_connections);
 int					is_ant(const char *lines, char **split_str);
 int					is_comment(const char *lines);
 
+// room_utils
+int					get_real_out_links(t_room *curr_room);
+int					get_real_in_links(t_room *curr_room);
+
+// Ants
+void				run_path(t_lem *lem, t_room *curr_room, int launched_ants, int *bfs_lvl);
+void				launch_ants(t_lem *lem, t_room *start, int ants);
 #endif

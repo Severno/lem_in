@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/artembykov/Desktop/lem_in
+CMAKE_SOURCE_DIR = /Users/sapril/lem_in
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/artembykov/Desktop/lem_in/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/sapril/lem_in/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/artembykov/Desktop/lem_in/cmake-build-debug/CMakeFiles /Users/artembykov/Desktop/lem_in/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sapril/lem_in/cmake-build-debug/CMakeFiles /Users/sapril/lem_in/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/artembykov/Desktop/lem_in/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sapril/lem_in/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1405,6 +1405,33 @@ libft/src/get_next_line.c.s:
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/libft/src/get_next_line.c.s
 .PHONY : libft/src/get_next_line.c.s
 
+src/ants.o: src/ants.c.o
+
+.PHONY : src/ants.o
+
+# target to build an object file
+src/ants.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/ants.c.o
+.PHONY : src/ants.c.o
+
+src/ants.i: src/ants.c.i
+
+.PHONY : src/ants.i
+
+# target to preprocess a source file
+src/ants.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/ants.c.i
+.PHONY : src/ants.c.i
+
+src/ants.s: src/ants.c.s
+
+.PHONY : src/ants.s
+
+# target to generate assembly for a file
+src/ants.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/ants.c.s
+.PHONY : src/ants.c.s
+
 src/bfs.o: src/bfs.c.o
 
 .PHONY : src/bfs.o
@@ -1678,6 +1705,33 @@ src/read_map.c.s:
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/read_map.c.s
 .PHONY : src/read_map.c.s
 
+src/room_utils.o: src/room_utils.c.o
+
+.PHONY : src/room_utils.o
+
+# target to build an object file
+src/room_utils.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/room_utils.c.o
+.PHONY : src/room_utils.c.o
+
+src/room_utils.i: src/room_utils.c.i
+
+.PHONY : src/room_utils.i
+
+# target to preprocess a source file
+src/room_utils.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/room_utils.c.i
+.PHONY : src/room_utils.c.i
+
+src/room_utils.s: src/room_utils.c.s
+
+.PHONY : src/room_utils.s
+
+# target to generate assembly for a file
+src/room_utils.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/room_utils.c.s
+.PHONY : src/room_utils.c.s
+
 src/validation.o: src/validation.c.o
 
 .PHONY : src/validation.o
@@ -1856,6 +1910,9 @@ help:
 	@echo "... libft/src/get_next_line.o"
 	@echo "... libft/src/get_next_line.i"
 	@echo "... libft/src/get_next_line.s"
+	@echo "... src/ants.o"
+	@echo "... src/ants.i"
+	@echo "... src/ants.s"
 	@echo "... src/bfs.o"
 	@echo "... src/bfs.i"
 	@echo "... src/bfs.s"
@@ -1886,6 +1943,9 @@ help:
 	@echo "... src/read_map.o"
 	@echo "... src/read_map.i"
 	@echo "... src/read_map.s"
+	@echo "... src/room_utils.o"
+	@echo "... src/room_utils.i"
+	@echo "... src/room_utils.s"
 	@echo "... src/validation.o"
 	@echo "... src/validation.i"
 	@echo "... src/validation.s"

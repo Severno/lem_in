@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:17:21 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/06 17:42:47 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/11 16:38:56 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ t_room *create_room(char **name, int x, int y)
 	new_room->coord_y = y;
 	new_room->in_degree = 0;
 	new_room->out_degree = 0;
+	new_room->ant_number = -1;
+	new_room->ant_is_here = -1;
 	new_room->in_link = ft_memalloc(sizeof(char *) * MIN_LINKS);
 	new_room->out_link = ft_memalloc(sizeof(char *) * MIN_LINKS);
 	while (i < MIN_LINKS)
@@ -81,16 +83,67 @@ t_room *create_room(char **name, int x, int y)
 	return (new_room);
 }
 
+void next_path(t_lem *lem, t_room *curr_room, t_room *prev)
+{
+	int out_degr_cur;
+	int out_degr_work;
+	int path_count;
+
+	out_degr_cur = 0;
+	if (ft_strequ(curr_room->name, lem->end))
+	{
+		curr_room->next = NULL;
+		curr_room->prev = prev;
+		return;
+	}
+	while (out_degr_cur < curr_room->out_degree)
+	{
+		if (curr_room->out_link[out_degr_cur] != NULL && curr_room->out_link[out_degr_cur][0] != '\0')
+		{
+			curr_room->next = ht_get(lem->ht, curr_room->out_link[out_degr_cur]);
+			curr_room->prev = prev;
+			next_path(lem, ht_get(lem->ht, curr_room->out_link[out_degr_cur]), curr_room);
+		}
+//		next_search(lem, ht_get(lem->ht, curr_room->out_link[out_degr_cur]));
+		out_degr_cur++;
+	}
+}
+
+void form_paths(t_lem *lem, t_room *start)
+{
+	int out_degr_cur;
+	int out_degr_work;
+	int path_count;
+	t_room *cur_room;
+
+	out_degr_cur = 0;
+	out_degr_work= 0;
+	path_count = 1;
+	ft_printf(RED"Start\n"RESET);
+	while (out_degr_cur < start->out_degree)
+	{
+		cur_room = ht_get(lem->ht, start->out_link[out_degr_cur]);
+		cur_room->prev = start;
+		next_path(lem, cur_room, start);
+		ft_putchar('\n');
+		out_degr_cur++;
+		out_degr_work = 0;
+		path_count++;
+	}
+}
+
 // ----MAIN LEM_IN----
 int			main(int argc, char *argv[])
 {
 	t_lem *lem;
+	t_room *start;
 
 	(void)argc;
 	(void)argv;
 	lem = create_lem_in();
-	lem->fd = open("maps/test2.map", O_RDONLY);
-	get_info(lem, "maps/test2.map");
+	lem->fd = open("../maps/test2.map", O_RDONLY);
+	get_info(lem, "../maps/test2.map");
+	start = ht_get(lem->ht, lem->start);
 //	ft_putstr(lem->names);
 	ht_print(lem->ht);
 //	ft_printf("start = %s\n", lem->start);
@@ -100,8 +153,19 @@ int			main(int argc, char *argv[])
 	ft_printf("Out links created = %d\n", out_links_created);
 //	ft_printf("Rooms created = %d\n", rooms_created);
 	print_rooms(lem);
-	bfs_set_lvl(lem, ht_get(lem->ht, lem->start));
+	bfs_set_lvl(lem, start, lem->end);
+	delete_useless_links(lem, start);
 	print_rooms(lem);
+	delete_input_links(lem, start);
+	print_rooms(lem);
+	delete_output_links(lem, start);
+	print_rooms(lem);
+	form_paths(lem, start);
+	print_rooms(lem);
+//	print_paths(lem, ht_get(lem->ht, lem->start));
+	bfs_set_lvl(lem, start, lem->end);
+	print_paths_linked_list(lem, start);
+	launch_ants(lem, start, lem->ants);
 //	print_links(lem);
 	close(lem->fd);
 	free_data(&lem);
