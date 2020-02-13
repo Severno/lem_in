@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:17:21 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/11 16:38:56 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/13 13:27:03 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ t_room *create_room(char **name, int x, int y)
 void next_path(t_lem *lem, t_room *curr_room, t_room *prev)
 {
 	int out_degr_cur;
-	int out_degr_work;
-	int path_count;
+//	int out_degr_work;
+//	int path_count;
 
 	out_degr_cur = 0;
 	if (ft_strequ(curr_room->name, lem->end))
@@ -112,12 +112,12 @@ void next_path(t_lem *lem, t_room *curr_room, t_room *prev)
 void form_paths(t_lem *lem, t_room *start)
 {
 	int out_degr_cur;
-	int out_degr_work;
+//	int out_degr_work;
 	int path_count;
 	t_room *cur_room;
 
 	out_degr_cur = 0;
-	out_degr_work= 0;
+//	out_degr_work= 0;
 	path_count = 1;
 	ft_printf(RED"Start\n"RESET);
 	while (out_degr_cur < start->out_degree)
@@ -127,7 +127,7 @@ void form_paths(t_lem *lem, t_room *start)
 		next_path(lem, cur_room, start);
 		ft_putchar('\n');
 		out_degr_cur++;
-		out_degr_work = 0;
+//		out_degr_work = 0;
 		path_count++;
 	}
 }
@@ -165,7 +165,7 @@ int			main(int argc, char *argv[])
 //	print_paths(lem, ht_get(lem->ht, lem->start));
 	bfs_set_lvl(lem, start, lem->end);
 	print_paths_linked_list(lem, start);
-	launch_ants(lem, start, lem->ants);
+	launch_ants(lem,  ht_get(lem->ht, lem->start), lem->ants);
 //	print_links(lem);
 	close(lem->fd);
 	free_data(&lem);

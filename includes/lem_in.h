@@ -123,7 +123,7 @@ int					get_pos_link_in(char **in_links, char *out_link, int in_degree);
 void				delete_current_link(t_room *from, t_room *to, int out_pos, int in_pos);
 void				delete_useless_links(t_lem *lem, t_room *start);
 void				delete_input_links(t_lem *lem, t_room *start);
-void				delete_cur_output_link(t_room *curr_room, t_room *next_room, t_lem *lem);
+void				delete_cur_output_link(t_room *curr_room, t_lem *lem);
 void				delete_output_links(t_lem *lem, t_room *start);
 
 // printing
@@ -131,7 +131,7 @@ void				print_ht_seen(t_ht *seen);
 void				print_links(t_lem *lem);
 void				print_rooms(t_lem *lem);
 void				print_paths(t_lem *lem, t_room *start);
-void				next_search_linked_list(t_lem *lem, t_room *cur_room);
+void				next_search_linked_list(t_room *cur_room);
 void				print_paths_linked_list(t_lem *lem, t_room *start);
 void				print_current_room_state(t_lem *lem, t_room *start, int bfs_level, int ants);
 

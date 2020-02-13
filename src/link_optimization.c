@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 19:57:55 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/11 11:12:22 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/13 13:27:45 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void delete_current_link(t_room *from, t_room *to, int out_pos, int in_pos)
 }
 
 
-void delete_cur_input_link(t_room *curr_room, t_room *next_room, t_lem *lem)
+void delete_cur_input_link(t_room *curr_room, t_lem *lem)
 {
 	int		real_out_links;
 	int		curr_out_degree;
@@ -207,7 +207,7 @@ void	delete_input_links(t_lem *lem, t_room *start)
 			{
 				if (ht_get(lem->ht, current->room->out_link[out_degree]) != NULL)
 				{
-					delete_cur_input_link(current->room, ht_get(lem->ht, current->room->out_link[out_degree]), lem);
+					delete_cur_input_link(current->room, lem);
 					if (!ht_get(seen, current->room->out_link[out_degree]))
 						enqueue(queue, ht_get(lem->ht, current->room->out_link[out_degree]));
 					//				print_queue(queue);
@@ -231,7 +231,7 @@ void	delete_input_links(t_lem *lem, t_room *start)
 //	ft_printf("Freed entries %d\n", freed_entries);
 }
 
-void delete_cur_output_link(t_room *curr_room, t_room *next_room, t_lem *lem)
+void delete_cur_output_link(t_room *curr_room, t_lem *lem)
 {
 	int		real_out_links;
 	int		curr_out_degree;
@@ -305,7 +305,7 @@ void	delete_output_links(t_lem *lem, t_room *start)
 			{
 				if (ht_get(lem->ht, current->room->out_link[out_degree]) != NULL)
 				{
-					delete_cur_output_link(current->room, ht_get(lem->ht, current->room->out_link[out_degree]), lem);
+					delete_cur_output_link(current->room,  lem);
 					if (!ht_get(seen, current->room->out_link[out_degree]))
 						enqueue(queue, ht_get(lem->ht, current->room->out_link[out_degree]));
 					//				print_queue(queue);

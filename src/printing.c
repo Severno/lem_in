@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 20:05:00 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/11 15:19:28 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/13 13:28:31 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ void print_rooms(t_lem *lem)
 void next_search(t_lem *lem, t_room *curr_room)
 {
 	int out_degr_cur;
-	int out_degr_work;
-	int path_count;
+//	int out_degr_work;
+//	int path_count;
 
 	out_degr_cur = 0;
 	if (ft_strequ(curr_room->name, lem->end))
@@ -120,12 +120,12 @@ void next_search(t_lem *lem, t_room *curr_room)
 void print_paths(t_lem *lem, t_room *start)
 {
 	int out_degr_cur;
-	int out_degr_work;
+//	int out_degr_work;
 	int path_count;
 	t_room *cur_room;
 
 	out_degr_cur = 0;
-	out_degr_work= 0;
+//	out_degr_work= 0;
 	path_count = 1;
 	ft_printf(RED"Start\n"RESET);
 	while (out_degr_cur < start->out_degree)
@@ -135,15 +135,13 @@ void print_paths(t_lem *lem, t_room *start)
 		next_search(lem, cur_room);
 		ft_putchar('\n');
 		out_degr_cur++;
-		out_degr_work = 0;
+//		out_degr_work = 0;
 		path_count++;
 	}
 }
 
-void next_search_linked_list(t_lem *lem, t_room *cur_room)
+void next_search_linked_list(t_room *cur_room)
 {
-	t_room *tmp_room;
-
 	while (cur_room)
 	{
 		ft_printf(" -> %s", cur_room->name);
@@ -154,22 +152,22 @@ void next_search_linked_list(t_lem *lem, t_room *cur_room)
 void print_paths_linked_list(t_lem *lem, t_room *start)
 {
 	int out_degr_cur;
-	int out_degr_work;
+//	int out_degr_work;
 	int path_count;
 	t_room *cur_room;
 
 	out_degr_cur = 0;
-	out_degr_work= 0;
+//	out_degr_work= 0;
 	path_count = 1;
 	ft_printf(RED"Start\n"RESET);
 	while (out_degr_cur < start->out_degree)
 	{
 		cur_room = ht_get(lem->ht, start->out_link[out_degr_cur]);
 		ft_printf("Path %d. %s", path_count, start->name);
-		next_search_linked_list(lem, cur_room);
+		next_search_linked_list(cur_room);
 		ft_putchar('\n');
 		out_degr_cur++;
-		out_degr_work = 0;
+//		out_degr_work = 0;
 		path_count++;
 	}
 }
