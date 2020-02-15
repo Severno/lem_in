@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 09:15:32 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/05 14:37:22 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/15 09:52:29 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_ht				*ht_create(void)
 	hash_table->entries = ft_memalloc(sizeof(t_entry *) * TABLE_SIZE);
 	while (i < TABLE_SIZE)
 		hash_table->entries[i++] = NULL;
-
 	return (hash_table);
 }
 
@@ -70,12 +69,11 @@ void				ht_set(t_ht *hashtable, const char *key, t_room **value)
 		hashtable->entries[slot] = ht_pair(key, value);
 		return ;
 	}
-
 	while (entry)
 	{
 		if (ft_strcmp(entry->key, key) == 0)
 		{
-			free(entry->value);
+//			free(entry->value);
 			entry->value = *value;
 			return;
 		}
@@ -84,8 +82,8 @@ void				ht_set(t_ht *hashtable, const char *key, t_room **value)
 //		prev->next = entry;
 	}
 //	ft_printf("glob_ht_count = %d, value edding = %s\n", glob_ht_pair_count, (*value)->name);
-	glob_ht_pair_count++;
-	prev->next = ht_pair(key, value);
+//	glob_ht_pair_count++;
+//	prev->next = ht_pair(key, value);
 }
 
 t_room		*ht_get(t_ht *hashtable, const char *key)

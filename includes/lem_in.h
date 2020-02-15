@@ -27,7 +27,6 @@ struct		s_lem;
 typedef struct		s_room
 {
 	char			*name;
-	int				visited;
 	int				coord_x;
 	int				coord_y;
 	char			*start;
@@ -38,9 +37,7 @@ typedef struct		s_room
 	char			**out_link;
 	int				bfs_lvl;
 	struct s_room	*next;
-	struct s_room	*prev;
 	int				ant_number;
-	int				ant_is_here;
 }					t_room;
 
 typedef struct		s_entry
@@ -78,14 +75,15 @@ typedef struct		s_lem
 {
 	int				ants;
 	int				rooms_cap;
-	char			**lines;
+//	char			**lines;
 	char			*names;
 	t_ht			*ht;
 	char			*start;
 	char			*end;
 	int				fd;
 	char			start_end_flag;
-	t_queue			*queue;
+	int				ants_finished;
+//	t_queue			*queue;
 }					t_lem;
 
 // hashmap
