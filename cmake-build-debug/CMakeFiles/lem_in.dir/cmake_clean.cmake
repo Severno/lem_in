@@ -55,6 +55,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/lem_in.dir/src/lem_in.c.o"
   "CMakeFiles/lem_in.dir/src/link_optimization.c.o"
   "CMakeFiles/lem_in.dir/src/printing.c.o"
+  "CMakeFiles/lem_in.dir/src/printing2.c.o"
   "CMakeFiles/lem_in.dir/src/queue.c.o"
   "CMakeFiles/lem_in.dir/src/read_map.c.o"
   "CMakeFiles/lem_in.dir/src/room_utils.c.o"

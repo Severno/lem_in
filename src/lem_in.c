@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:17:21 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/15 10:11:06 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/15 11:19:52 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,9 @@ t_room *create_room(char **name, int x, int y)
 	return (new_room);
 }
 
-void next_path(t_lem *lem, t_room *curr_room, t_room *prev)
+void next_path(t_lem *lem, t_room *curr_room)
 {
 	int out_degr_cur;
-//	int out_degr_work;
-//	int path_count;
 
 	out_degr_cur = 0;
 	if (ft_strequ(curr_room->name, lem->end))
@@ -102,7 +100,7 @@ void next_path(t_lem *lem, t_room *curr_room, t_room *prev)
 		if (curr_room->out_link[out_degr_cur] != NULL && curr_room->out_link[out_degr_cur][0] != '\0')
 		{
 			curr_room->next = ht_get(lem->ht, curr_room->out_link[out_degr_cur]);
-			next_path(lem, ht_get(lem->ht, curr_room->out_link[out_degr_cur]), curr_room);
+			next_path(lem, ht_get(lem->ht, curr_room->out_link[out_degr_cur]));
 		}
 //		next_search(lem, ht_get(lem->ht, curr_room->out_link[out_degr_cur]));
 		out_degr_cur++;
@@ -123,7 +121,7 @@ void form_paths(t_lem *lem, t_room *start)
 	while (out_degr_cur < start->out_degree)
 	{
 		cur_room = ht_get(lem->ht, start->out_link[out_degr_cur]);
-		next_path(lem, cur_room, start);
+		next_path(lem, cur_room);
 		ft_putchar('\n');
 		out_degr_cur++;
 //		out_degr_work = 0;
@@ -140,8 +138,8 @@ int			main(int argc, char *argv[])
 	(void)argc;
 	(void)argv;
 	lem = create_lem_in();
-	lem->fd = open("../maps/test.map", O_RDONLY);
-	get_info(lem, "../maps/test.map");
+	lem->fd = open("../maps/test2.map", O_RDONLY);
+	get_info(lem, "../maps/test2.map");
 	start = ht_get(lem->ht, lem->start);
 //	ft_putstr(lem->names);
 //	ht_print(lem->ht);
@@ -160,10 +158,9 @@ int			main(int argc, char *argv[])
 	delete_output_links(lem, start);
 //	print_rooms(lem);
 	form_paths(lem, start);
-//	print_rooms(lem);
-	print_paths(lem, ht_get(lem->ht, lem->start));
+	print_rooms(lem);
 	bfs_set_lvl(lem, start, lem->end);
-	print_paths_linked_list(lem, start);
+//	print_paths_linked_list(lem, start);
 	launch_ants(lem,  ht_get(lem->ht, lem->start), lem->ants);
 //	print_links(lem);
 	close(lem->fd);

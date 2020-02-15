@@ -93,121 +93,47 @@ void print_rooms(t_lem *lem)
 	}
 }
 
-void next_search(t_lem *lem, t_room *curr_room)
-{
-	int out_degr_cur;
-//	int out_degr_work;
-//	int path_count;
-
-	out_degr_cur = 0;
-	if (ft_strequ(curr_room->name, lem->end))
-	{
-		ft_printf(" -> %s", curr_room->name);
-		return;
-	}
-	while (out_degr_cur < curr_room->out_degree)
-	{
-		if (curr_room->out_link[out_degr_cur] != NULL && curr_room->out_link[out_degr_cur][0] != '\0')
-		{
-			ft_printf(" -> %s", curr_room->name);
-			next_search(lem, ht_get(lem->ht, curr_room->out_link[out_degr_cur]));
-		}
-//		next_search(lem, ht_get(lem->ht, curr_room->out_link[out_degr_cur]));
-		out_degr_cur++;
-	}
-}
-
-void print_paths(t_lem *lem, t_room *start)
-{
-	int out_degr_cur;
-//	int out_degr_work;
-	int path_count;
-	t_room *cur_room;
-
-	out_degr_cur = 0;
-//	out_degr_work= 0;
-	path_count = 1;
-	ft_printf(RED"Start\n"RESET);
-	while (out_degr_cur < start->out_degree)
-	{
-		cur_room = ht_get(lem->ht, start->out_link[out_degr_cur]);
-		ft_printf("Path %d. %s", path_count, start->name);
-		next_search(lem, cur_room);
-		ft_putchar('\n');
-		out_degr_cur++;
-//		out_degr_work = 0;
-		path_count++;
-	}
-}
-
-void next_search_linked_list(t_room *cur_room)
-{
-	while (cur_room)
-	{
-		ft_printf(" -> %s", cur_room->name);
-		cur_room = cur_room->next;
-	}
-}
-
 void print_paths_linked_list(t_lem *lem, t_room *start)
 {
 	int out_degr_cur;
-//	int out_degr_work;
 	int path_count;
 	t_room *cur_room;
 
 	out_degr_cur = 0;
-//	out_degr_work= 0;
 	path_count = 1;
 	ft_printf(RED"Start\n"RESET);
 	while (out_degr_cur < start->out_degree)
 	{
 		cur_room = ht_get(lem->ht, start->out_link[out_degr_cur]);
 		ft_printf("Path %d. %s", path_count, start->name);
-		next_search_linked_list(cur_room);
+		while (cur_room)
+		{
+			ft_printf(" -> %s", cur_room->name);
+			cur_room = cur_room->next;
+		}
 		ft_putchar('\n');
 		out_degr_cur++;
-//		out_degr_work = 0;
 		path_count++;
 	}
 }
 
-void print_current_room_state(t_lem *lem, t_room *start, int bfs_level, int ants)
+void print_current_ants_position(t_ht *ants_and_rooms, int curr_ant, t_lem *lem)
 {
-	t_ht	*seen;
-	t_queue	*queue;
-	t_qnode *current;
-	int		out_degree;
-	t_room	*deciding_room;
+	int tmp_ants;
+	t_room *curr_room;
 
-	out_degree = 0;
-	seen = create_seen();
-	queue = queue_create();
-	enqueue(queue, start);
-	while (queue->front && bfs_level-- >= 0)
+	tmp_ants = 1;
+	while (tmp_ants < curr_ant)
 	{
-		current = dequeue(queue);
-		if (current == NULL || current->room == NULL)
-			continue;
-		if (!current->room->name)
-			continue;
-		if (!ht_get(seen, current->room->name)) // проверяем есть ли в просмотренных
+		curr_room = ht_get(ants_and_rooms, ft_itoa(tmp_ants));
+		if (!curr_room)
 		{
-			ht_set(seen, current->room->name, &current->room); // если нет, добавляем в просмотренные
-			while (out_degree < current->room->out_degree) // смотрим все исходящие ссылки из текущий комнаты
-			{
-				deciding_room = ht_get(lem->ht, current->room->out_link[out_degree]);
-				if (deciding_room && deciding_room->name && deciding_room->name[0] != '\0')
-					ft_printf("L%d-%s ", ants, deciding_room->name);
-				if (!ht_get(seen, current->room->out_link[out_degree])) // если его нет в просмотренном добавляем в очередь
-					enqueue(queue, ht_get(lem->ht, current->room->out_link[out_degree]));
-				out_degree++;
-			}
+			tmp_ants++;
+			continue;
 		}
-		free(current);
-		out_degree = 0;
+		if (!ft_strequ(curr_room->name, lem->end))
+			ft_printf("L%d-%s ", tmp_ants, curr_room->name);
+		tmp_ants++;
 	}
-	ft_printf("\n");
-	free(queue);
-	free_seen(&seen);
+	ft_putchar('\n');
 }

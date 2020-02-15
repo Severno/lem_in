@@ -49,16 +49,16 @@ void reverse_bfs_set_lel(t_lem *lem, t_room *start, char *end)
 	start->bfs_lvl = 0;
 	while (queue->front)
 	{
-		print_queue(queue);
-		print_ht_seen(seen);
+//		print_queue(queue);
+//		print_ht_seen(seen);
 		current = dequeue(queue);
 		if (current == NULL || current->room == NULL)
 			continue;
 		if (!current->room->name)
 			continue;
-		print_queue(queue);
-		print_ht_seen(seen);
-		ft_printf(BLUE"Current working %s \n"RESET, current->room->name);
+//		print_queue(queue);
+//		print_ht_seen(seen);
+//		ft_printf(BLUE"Current working %s \n"RESET, current->room->name);
 		if (!ht_get(seen, current->room->name)) // проверяем есть ли в просмотренных
 		{
 			ht_set(seen, current->room->name, &current->room); // если нет, добавляем в просмотренные
@@ -81,8 +81,8 @@ void reverse_bfs_set_lel(t_lem *lem, t_room *start, char *end)
 	}
 	free(queue);
 	free_seen(&seen);
-	ft_printf("Malloc entries %d\n", malloc_entries);
-	ft_printf("Freed entries %d\n", freed_entries);
+//	ft_printf("Malloc entries %d\n", malloc_entries);
+//	ft_printf("Freed entries %d\n", freed_entries);
 }
 
 void set_bfs_lvl(t_lem *lem, t_qnode *current, int	out_degree, char *end)
@@ -145,6 +145,6 @@ void		bfs_set_lvl(t_lem *lem, t_room *start, char *end)
 	}
 	free(queue);
 	free_seen(&seen);
-	ft_printf("Malloc entries %d\n", malloc_entries);
-	ft_printf("Freed entries %d\n", freed_entries);
+//	ft_printf("Malloc entries %d\n", malloc_entries);
+//	ft_printf("Freed entries %d\n", freed_entries);
 }

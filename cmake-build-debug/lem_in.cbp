@@ -295,6 +295,9 @@
 		<Unit filename="/Users/sapril/lem_in/src/printing.c">
 			<Option target="lem_in"/>
 		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/printing2.c">
+			<Option target="lem_in"/>
+		</Unit>
 		<Unit filename="/Users/sapril/lem_in/src/queue.c">
 			<Option target="lem_in"/>
 		</Unit>

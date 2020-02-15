@@ -1651,6 +1651,33 @@ src/printing.c.s:
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/printing.c.s
 .PHONY : src/printing.c.s
 
+src/printing2.o: src/printing2.c.o
+
+.PHONY : src/printing2.o
+
+# target to build an object file
+src/printing2.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/printing2.c.o
+.PHONY : src/printing2.c.o
+
+src/printing2.i: src/printing2.c.i
+
+.PHONY : src/printing2.i
+
+# target to preprocess a source file
+src/printing2.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/printing2.c.i
+.PHONY : src/printing2.c.i
+
+src/printing2.s: src/printing2.c.s
+
+.PHONY : src/printing2.s
+
+# target to generate assembly for a file
+src/printing2.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/printing2.c.s
+.PHONY : src/printing2.c.s
+
 src/queue.o: src/queue.c.o
 
 .PHONY : src/queue.o
@@ -1937,6 +1964,9 @@ help:
 	@echo "... src/printing.o"
 	@echo "... src/printing.i"
 	@echo "... src/printing.s"
+	@echo "... src/printing2.o"
+	@echo "... src/printing2.i"
+	@echo "... src/printing2.s"
 	@echo "... src/queue.o"
 	@echo "... src/queue.i"
 	@echo "... src/queue.s"

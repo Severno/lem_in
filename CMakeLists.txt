@@ -63,6 +63,7 @@ add_executable(lem_in
         src/free_data2.c
         src/room_utils.c
         src/ants.c
+        src/printing2.c
         libft/src/get_next_line.c
         )
 
