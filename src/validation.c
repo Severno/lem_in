@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 19:19:58 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/03 19:22:16 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/17 16:40:50 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,16 @@ int is_end_or_start(t_lem *lem, char **split_str)
 	return (0);
 }
 
-int is_room(char **split_str, char **lines)
+int is_room(t_lem *lem, char **split_str, char **lines)
 {
-	if (!ft_strchr(*lines, '-') && split_str[0] && check_coord_valid(split_str[1], split_str[2]))
-		return (1);
+//	ft_printf("IS ROOM HERE\n");
+	(void)lines;
+	if (split_str[0] && split_str[1] && split_str[2])
+	{
+		if (check_coord_valid(split_str[1], split_str[2]))
+			return (1);
+		lem->errors++;
+	}
 	return (0);
 }
 
@@ -39,6 +45,7 @@ int is_ant(const char *lines, char **split_str)
 {
 	if (ft_str_is_numeric_no_spaces(split_str[0]) && split_str[1] == NULL && !ft_strchr(lines, '-'))
 		return (1);
+
 	return (0);
 }
 

@@ -19,6 +19,8 @@ int get_real_out_links(t_room *curr_room)
 
 	i = 0;
 	real_out_links = 0;
+	if (!curr_room)
+		return (0);
 	while (i < MIN_LINKS)
 	{
 		if (curr_room->out_link[i] != NULL && curr_room->out_link[i][0] != '\0')

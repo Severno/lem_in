@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 19:57:55 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/15 11:07:36 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/17 14:34:41 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,11 +131,11 @@ void	delete_useless_links(t_lem *lem, t_room *start)
 			continue;
 //		print_queue(queue);
 //		print_ht_seen(seen);
-		ft_printf(BLUE"Current working %s \n"RESET, current->room->name);
+//		ft_printf(BLUE"Current working %s \n"RESET, current->room->name);
 		if (!ht_get(seen, current->room->name)) // проверяем есть ли в просмотренных
 		{
 			ht_set(seen, current->room->name, &current->room); // если нет, добавляем в просмотренные
-			ft_printf("Current node = %s, bfs_lvl = %d\n", current->room->name, current->room->bfs_lvl);
+//			ft_printf("Current node = %s, bfs_lvl = %d\n", current->room->name, current->room->bfs_lvl);
 			while (out_degree < current->room->out_degree) // смотрим все исходящие ссылки из текущий комнаты
 			{
 				if (ht_get(lem->ht, current->room->out_link[out_degree]) != NULL)
@@ -158,8 +158,8 @@ void	delete_useless_links(t_lem *lem, t_room *start)
 						enqueue(queue, ht_get(lem->ht, current->room->out_link[out_degree]));
 	//				print_queue(queue);
 	//				print_ht_seen(seen);
-					if (current->room->out_link[out_degree])
-						ft_printf("Current node = %s, bfs_lvl = %d\n", current->room->out_link[out_degree], ht_get(lem->ht, current->room->out_link[out_degree])->bfs_lvl);
+//					if (current->room->out_link[out_degree])
+//						ft_printf("Current node = %s, bfs_lvl = %d\n", current->room->out_link[out_degree], ht_get(lem->ht, current->room->out_link[out_degree])->bfs_lvl);
 				}
 				out_degree++;
 			}
@@ -198,7 +198,7 @@ void	delete_input_links(t_lem *lem, t_room *start)
 			continue;
 //		print_queue(queue);
 //		print_ht_seen(seen);
-		ft_printf(BLUE"Current working %s \n"RESET, current->room->name);
+//		ft_printf(BLUE"Current working %s \n"RESET, current->room->name);
 		if (!ht_get(seen, current->room->name)) // проверяем есть ли в просмотренных
 		{
 			ht_set(seen, current->room->name, &current->room); // если нет, добавляем в просмотренные

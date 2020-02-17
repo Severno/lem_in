@@ -83,6 +83,7 @@ typedef struct		s_lem
 	int				fd;
 	char			start_end_flag;
 	int				ants_finished;
+	int				errors;
 //	t_queue			*queue;
 }					t_lem;
 
@@ -157,7 +158,7 @@ void				free_split_str(char ***tab);
 
 // validation
 int					is_end_or_start(t_lem *lem, char **split_str);
-int					is_room(char **split_str, char **lines);
+int					is_room(t_lem *lem, char **split_str, char **lines);
 int					is_connection(t_lem *lem, char **split_connections);
 int					is_ant(const char *lines, char **split_str);
 int					is_comment(const char *lines);

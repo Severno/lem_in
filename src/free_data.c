@@ -51,17 +51,18 @@ void 			free_entries(t_lem **lem, int i)
 
 void			free_entry(t_entry **entry)
 {
-	free((*entry)->value->name);
-	free((*entry)->value);
-	free((*entry)->key);
+	(*entry)->value->name ? free((*entry)->value->name) : 0;
+	(*entry)->value ? free((*entry)->value) : 0;
+	(*entry)->key ? free((*entry)->key) : 0;
 }
 
 void			free_lem(t_lem **lem)
 {
-	free((*lem)->ht->entries);
-	free((*lem)->ht);
-	free((*lem)->names);
-	free((*lem)->end);
-	free((*lem)->start);
-	free((*lem));
+
+	(*lem)->ht->entries ? free((*lem)->ht->entries) : 0;
+	(*lem)->ht ? free((*lem)->ht) : 0;
+	(*lem)->names ? free((*lem)->names) : 0;
+	(*lem)->end ? free((*lem)->end) : 0;
+	(*lem)->start ? free((*lem)->start) : 0;
+	(*lem) ? free((*lem)) : 0;
 }

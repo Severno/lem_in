@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 09:50:58 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/06 17:25:17 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/17 16:58:54 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,38 @@
 //
 //Map must have no duplicates of links. There are no links that connect the same points.
 
+int room_exist(t_lem *lem, char *str)
+{
+	if (ht_get(lem->ht, str))
+		return (1);
+	return (0);
+}
+
 void			add_link(t_lem *lem, char *lines, char **split_str)
 {
 	t_room 	*from;
 	t_room	*to;
 	char	*tmp;
 	char	**split_connections;
+	char	*check_room;
 
 	free_split_str(&split_str);
+	if (lines[0] == '-')
+	{
+		if ((check_room = ft_strchr(lines, '-')))
+		{
+			ft_printf("Yes this is room %s\n", check_room); // TODO добавить проверку на ---8---, аргументы с дефисами.
+			// можно сделать через ft_strcmp и выводить элемент где оин отличаются от тех что хранятся в lem->ht
+		}
+	}
+	else
+	{
+		if ((check_room = ft_strchr(lines, '-')))
+		{
+			ft_printf("Yes this is room %s\n", check_room + 1);
+		}
+	}
+
 	split_connections = ft_strsplit(lines, '-');
 	free(lines);
 	lines = NULL;
@@ -43,6 +67,11 @@ void			add_link(t_lem *lem, char *lines, char **split_str)
 	{
 		from = ht_get(lem->ht, split_connections[0]);
 		to = ht_get(lem->ht, split_connections[1]);
+		if (!from || !to)
+		{
+			printf("NO PATH\n");
+			exit(free_data(&lem));
+		}
 		if (from->out_link[from->out_degree] == NULL)
 		{
 			from->out_link[from->out_degree] = ft_strnew(ft_strlen(to->name) + 1);
@@ -87,13 +116,21 @@ void			add_start_or_end(t_lem *lem, char **split_str, char **lines)
 {
 	char	*tmp_dest;
 	t_room	*new_room;
+	int		ret;
 
 	tmp_dest = ft_strdup(*lines);
 	free(*lines);
 	(*lines) = NULL;
 	free_split_str(&split_str);
-	get_next_line(lem->fd, lines);
+	ret = get_next_line(lem->fd, lines);
+	ft_printf("%s\n", *lines);
 	split_str = ft_strsplit(*lines, ' ');
+	if (ret <= 0 || !is_room(lem, split_str, lines))
+	{
+//		printf("NO END OR START\n");
+		exit(free_data(&lem));
+	}
+//	ft_printf("PASS???\n");
 	if (ft_strequ(tmp_dest, "##end") && !(lem->start_end_flag & 1)) {
 		lem->start_end_flag ^= 1;
 		lem->end = ft_strdup(split_str[0]);
@@ -131,32 +168,37 @@ void		get_info(t_lem *lem, char *file_name)
 
 	while (get_next_line(lem->fd, &lines) > 0)
 	{
-		split_str = ft_strsplit(lines, ' ');
-		if (is_comment(lines))
+		ft_printf("%s\n", lines);
+		if (lem->errors == 0)
 		{
-			free_split_str(&split_str);
-			free(lines);
-			lines = NULL;
-			continue;
+			split_str = ft_strsplit(lines, ' ');
+			if (is_comment(lines))
+			{
+				free_split_str(&split_str);
+				free(lines);
+				lines = NULL;
+				continue;
+			}
+			else if (is_ant(lines, split_str))
+			{
+				lem->ants = ft_atoi(split_str[0]);
+				free_split_str(&split_str);
+				free(lines);
+				lines = NULL;
+			}
+			else if (is_end_or_start(lem, split_str))
+				add_start_or_end(lem, split_str, &lines);
+			else if (is_room(lem, split_str, &lines))
+				add_el_to_hash_map(lem, &lines, split_str);
+			else if (ft_strchr(lines, '-'))
+				add_link(lem, lines, split_str);
+			else
+			{
+				free_split_str(&split_str);
+				free(lines);
+				lines = NULL;
+			}
 		}
-		else if (is_ant(lines, split_str))
-		{
-			lem->ants = ft_atoi(split_str[0]);
-			free_split_str(&split_str);
-			free(lines);
-			lines = NULL;
-		}
-		else if (is_end_or_start(lem, split_str))
-			add_start_or_end(lem, split_str, &lines);
-		else if (is_room(split_str, &lines))
-			add_el_to_hash_map(lem, &lines, split_str);
-		else if (ft_strchr(lines, '-'))
-			add_link(lem, lines, split_str);
-		else
-		{
-			free_split_str(&split_str);
-			free(lines);
-			lines = NULL;
-		}
+
 	}
 }
