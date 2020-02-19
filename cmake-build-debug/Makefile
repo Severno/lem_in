@@ -1459,6 +1459,33 @@ src/bfs.c.s:
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/bfs.c.s
 .PHONY : src/bfs.c.s
 
+src/copy_lines.o: src/copy_lines.c.o
+
+.PHONY : src/copy_lines.o
+
+# target to build an object file
+src/copy_lines.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/copy_lines.c.o
+.PHONY : src/copy_lines.c.o
+
+src/copy_lines.i: src/copy_lines.c.i
+
+.PHONY : src/copy_lines.i
+
+# target to preprocess a source file
+src/copy_lines.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/copy_lines.c.i
+.PHONY : src/copy_lines.c.i
+
+src/copy_lines.s: src/copy_lines.c.s
+
+.PHONY : src/copy_lines.s
+
+# target to generate assembly for a file
+src/copy_lines.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/copy_lines.c.s
+.PHONY : src/copy_lines.c.s
+
 src/free_data.o: src/free_data.c.o
 
 .PHONY : src/free_data.o
@@ -1540,6 +1567,33 @@ src/get_info.c.s:
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/get_info.c.s
 .PHONY : src/get_info.c.s
 
+src/handle_errors.o: src/handle_errors.c.o
+
+.PHONY : src/handle_errors.o
+
+# target to build an object file
+src/handle_errors.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/handle_errors.c.o
+.PHONY : src/handle_errors.c.o
+
+src/handle_errors.i: src/handle_errors.c.i
+
+.PHONY : src/handle_errors.i
+
+# target to preprocess a source file
+src/handle_errors.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/handle_errors.c.i
+.PHONY : src/handle_errors.c.i
+
+src/handle_errors.s: src/handle_errors.c.s
+
+.PHONY : src/handle_errors.s
+
+# target to generate assembly for a file
+src/handle_errors.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/handle_errors.c.s
+.PHONY : src/handle_errors.c.s
+
 src/hashmap.o: src/hashmap.c.o
 
 .PHONY : src/hashmap.o
@@ -1569,6 +1623,33 @@ src/hashmap.c.s:
 	$(MAKE) -f CMakeFiles/hashmap.dir/build.make CMakeFiles/hashmap.dir/src/hashmap.c.s
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/hashmap.c.s
 .PHONY : src/hashmap.c.s
+
+src/init_structs.o: src/init_structs.c.o
+
+.PHONY : src/init_structs.o
+
+# target to build an object file
+src/init_structs.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/init_structs.c.o
+.PHONY : src/init_structs.c.o
+
+src/init_structs.i: src/init_structs.c.i
+
+.PHONY : src/init_structs.i
+
+# target to preprocess a source file
+src/init_structs.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/init_structs.c.i
+.PHONY : src/init_structs.c.i
+
+src/init_structs.s: src/init_structs.c.s
+
+.PHONY : src/init_structs.s
+
+# target to generate assembly for a file
+src/init_structs.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/init_structs.c.s
+.PHONY : src/init_structs.c.s
 
 src/lem_in.o: src/lem_in.c.o
 
@@ -1623,6 +1704,33 @@ src/link_optimization.s: src/link_optimization.c.s
 src/link_optimization.c.s:
 	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/link_optimization.c.s
 .PHONY : src/link_optimization.c.s
+
+src/path_creating.o: src/path_creating.c.o
+
+.PHONY : src/path_creating.o
+
+# target to build an object file
+src/path_creating.c.o:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/path_creating.c.o
+.PHONY : src/path_creating.c.o
+
+src/path_creating.i: src/path_creating.c.i
+
+.PHONY : src/path_creating.i
+
+# target to preprocess a source file
+src/path_creating.c.i:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/path_creating.c.i
+.PHONY : src/path_creating.c.i
+
+src/path_creating.s: src/path_creating.c.s
+
+.PHONY : src/path_creating.s
+
+# target to generate assembly for a file
+src/path_creating.c.s:
+	$(MAKE) -f CMakeFiles/lem_in.dir/build.make CMakeFiles/lem_in.dir/src/path_creating.c.s
+.PHONY : src/path_creating.c.s
 
 src/printing.o: src/printing.c.o
 
@@ -1943,6 +2051,9 @@ help:
 	@echo "... src/bfs.o"
 	@echo "... src/bfs.i"
 	@echo "... src/bfs.s"
+	@echo "... src/copy_lines.o"
+	@echo "... src/copy_lines.i"
+	@echo "... src/copy_lines.s"
 	@echo "... src/free_data.o"
 	@echo "... src/free_data.i"
 	@echo "... src/free_data.s"
@@ -1952,15 +2063,24 @@ help:
 	@echo "... src/get_info.o"
 	@echo "... src/get_info.i"
 	@echo "... src/get_info.s"
+	@echo "... src/handle_errors.o"
+	@echo "... src/handle_errors.i"
+	@echo "... src/handle_errors.s"
 	@echo "... src/hashmap.o"
 	@echo "... src/hashmap.i"
 	@echo "... src/hashmap.s"
+	@echo "... src/init_structs.o"
+	@echo "... src/init_structs.i"
+	@echo "... src/init_structs.s"
 	@echo "... src/lem_in.o"
 	@echo "... src/lem_in.i"
 	@echo "... src/lem_in.s"
 	@echo "... src/link_optimization.o"
 	@echo "... src/link_optimization.i"
 	@echo "... src/link_optimization.s"
+	@echo "... src/path_creating.o"
+	@echo "... src/path_creating.i"
+	@echo "... src/path_creating.s"
 	@echo "... src/printing.o"
 	@echo "... src/printing.i"
 	@echo "... src/printing.s"

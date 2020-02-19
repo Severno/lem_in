@@ -286,12 +286,26 @@ CMakeFiles/lem_in.dir/src/get_info.c.o: ../libft/includes/libft.h
 CMakeFiles/lem_in.dir/src/get_info.c.o: ../libft/includes/sort_algs.h
 CMakeFiles/lem_in.dir/src/get_info.c.o: ../src/get_info.c
 
+CMakeFiles/lem_in.dir/src/handle_errors.c.o: ../includes/lem_in.h
+CMakeFiles/lem_in.dir/src/handle_errors.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/lem_in.dir/src/handle_errors.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/lem_in.dir/src/handle_errors.c.o: ../libft/includes/libft.h
+CMakeFiles/lem_in.dir/src/handle_errors.c.o: ../libft/includes/sort_algs.h
+CMakeFiles/lem_in.dir/src/handle_errors.c.o: ../src/handle_errors.c
+
 CMakeFiles/lem_in.dir/src/hashmap.c.o: ../includes/lem_in.h
 CMakeFiles/lem_in.dir/src/hashmap.c.o: ../libft/includes/ft_printf.h
 CMakeFiles/lem_in.dir/src/hashmap.c.o: ../libft/includes/get_next_line.h
 CMakeFiles/lem_in.dir/src/hashmap.c.o: ../libft/includes/libft.h
 CMakeFiles/lem_in.dir/src/hashmap.c.o: ../libft/includes/sort_algs.h
 CMakeFiles/lem_in.dir/src/hashmap.c.o: ../src/hashmap.c
+
+CMakeFiles/lem_in.dir/src/init_structs.c.o: ../includes/lem_in.h
+CMakeFiles/lem_in.dir/src/init_structs.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/lem_in.dir/src/init_structs.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/lem_in.dir/src/init_structs.c.o: ../libft/includes/libft.h
+CMakeFiles/lem_in.dir/src/init_structs.c.o: ../libft/includes/sort_algs.h
+CMakeFiles/lem_in.dir/src/init_structs.c.o: ../src/init_structs.c
 
 CMakeFiles/lem_in.dir/src/lem_in.c.o: ../includes/lem_in.h
 CMakeFiles/lem_in.dir/src/lem_in.c.o: ../libft/includes/ft_printf.h
@@ -306,6 +320,13 @@ CMakeFiles/lem_in.dir/src/link_optimization.c.o: ../libft/includes/get_next_line
 CMakeFiles/lem_in.dir/src/link_optimization.c.o: ../libft/includes/libft.h
 CMakeFiles/lem_in.dir/src/link_optimization.c.o: ../libft/includes/sort_algs.h
 CMakeFiles/lem_in.dir/src/link_optimization.c.o: ../src/link_optimization.c
+
+CMakeFiles/lem_in.dir/src/path_creating.c.o: ../includes/lem_in.h
+CMakeFiles/lem_in.dir/src/path_creating.c.o: ../libft/includes/ft_printf.h
+CMakeFiles/lem_in.dir/src/path_creating.c.o: ../libft/includes/get_next_line.h
+CMakeFiles/lem_in.dir/src/path_creating.c.o: ../libft/includes/libft.h
+CMakeFiles/lem_in.dir/src/path_creating.c.o: ../libft/includes/sort_algs.h
+CMakeFiles/lem_in.dir/src/path_creating.c.o: ../src/path_creating.c
 
 CMakeFiles/lem_in.dir/src/printing.c.o: ../includes/lem_in.h
 CMakeFiles/lem_in.dir/src/printing.c.o: ../libft/includes/ft_printf.h

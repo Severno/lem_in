@@ -64,6 +64,10 @@ add_executable(lem_in
         src/room_utils.c
         src/ants.c
         src/printing2.c
+        src/init_structs.c
+        src/handle_errors.c
+        src/path_creating.c
+        src/copy_lines.c
         libft/src/get_next_line.c
         )
 

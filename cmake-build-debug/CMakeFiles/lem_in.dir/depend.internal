@@ -286,6 +286,13 @@ CMakeFiles/lem_in.dir/src/get_info.c.o
  /Users/sapril/lem_in/libft/includes/libft.h
  /Users/sapril/lem_in/libft/includes/sort_algs.h
  /Users/sapril/lem_in/src/get_info.c
+CMakeFiles/lem_in.dir/src/handle_errors.c.o
+ /Users/sapril/lem_in/includes/lem_in.h
+ /Users/sapril/lem_in/libft/includes/ft_printf.h
+ /Users/sapril/lem_in/libft/includes/get_next_line.h
+ /Users/sapril/lem_in/libft/includes/libft.h
+ /Users/sapril/lem_in/libft/includes/sort_algs.h
+ /Users/sapril/lem_in/src/handle_errors.c
 CMakeFiles/lem_in.dir/src/hashmap.c.o
  /Users/sapril/lem_in/includes/lem_in.h
  /Users/sapril/lem_in/libft/includes/ft_printf.h
@@ -293,6 +300,13 @@ CMakeFiles/lem_in.dir/src/hashmap.c.o
  /Users/sapril/lem_in/libft/includes/libft.h
  /Users/sapril/lem_in/libft/includes/sort_algs.h
  /Users/sapril/lem_in/src/hashmap.c
+CMakeFiles/lem_in.dir/src/init_structs.c.o
+ /Users/sapril/lem_in/includes/lem_in.h
+ /Users/sapril/lem_in/libft/includes/ft_printf.h
+ /Users/sapril/lem_in/libft/includes/get_next_line.h
+ /Users/sapril/lem_in/libft/includes/libft.h
+ /Users/sapril/lem_in/libft/includes/sort_algs.h
+ /Users/sapril/lem_in/src/init_structs.c
 CMakeFiles/lem_in.dir/src/lem_in.c.o
  /Users/sapril/lem_in/includes/lem_in.h
  /Users/sapril/lem_in/libft/includes/ft_printf.h
@@ -307,6 +321,13 @@ CMakeFiles/lem_in.dir/src/link_optimization.c.o
  /Users/sapril/lem_in/libft/includes/libft.h
  /Users/sapril/lem_in/libft/includes/sort_algs.h
  /Users/sapril/lem_in/src/link_optimization.c
+CMakeFiles/lem_in.dir/src/path_creating.c.o
+ /Users/sapril/lem_in/includes/lem_in.h
+ /Users/sapril/lem_in/libft/includes/ft_printf.h
+ /Users/sapril/lem_in/libft/includes/get_next_line.h
+ /Users/sapril/lem_in/libft/includes/libft.h
+ /Users/sapril/lem_in/libft/includes/sort_algs.h
+ /Users/sapril/lem_in/src/path_creating.c
 CMakeFiles/lem_in.dir/src/printing.c.o
  /Users/sapril/lem_in/includes/lem_in.h
  /Users/sapril/lem_in/libft/includes/ft_printf.h

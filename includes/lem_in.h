@@ -2,8 +2,11 @@
 # define LEM_IN_H
 # include "../libft/includes/libft.h"
 # define TABLE_SIZE 100000
+# define LINE_SIZE 100000
 # define NICE_PRIME_NUMBER 37
-# define MIN_LINKS 30
+# define MIN_LINKS 50
+# define NUM_LEN_WITH_SIGN 11
+# define NUM_LEN_NO_SIGN 10
 # define QUEUE_SIZE 5000
 # define X 0
 # define Y 1
@@ -36,6 +39,7 @@ typedef struct		s_room
 	char			**in_link;
 	char			**out_link;
 	int				bfs_lvl;
+	int				visited;
 	struct s_room	*next;
 	int				ant_number;
 }					t_room;
@@ -84,6 +88,9 @@ typedef struct		s_lem
 	char			start_end_flag;
 	int				ants_finished;
 	int				errors;
+	int				concat_bytes;
+	int				concat_mult;
+	char			*concat_lines;
 //	t_queue			*queue;
 }					t_lem;
 
@@ -134,6 +141,8 @@ void 				print_links(t_lem *lem);
 void 				print_rooms(t_lem *lem);
 void 				print_paths_linked_list(t_lem *lem, t_room *start);
 void 				print_current_ants_position(t_ht *ants_and_rooms, int curr_ant, t_lem *lem);
+void				print_out_rooms(t_room *room);
+void				print_lines(char *lines);
 
 //lemin
 t_room				*create_room(char **name, int x, int y);
@@ -155,6 +164,7 @@ void				free_entry(t_entry **entry);
 void				free_seen(t_ht **seen);
 void				free_str_links(char ***in_links, char ***out_links);
 void				free_split_str(char ***tab);
+void				free_line_info(char ***split_str, char **lines);
 
 // validation
 int					is_end_or_start(t_lem *lem, char **split_str);
@@ -170,4 +180,30 @@ int					get_real_in_links(t_room *curr_room);
 // Ants
 void				run_path(t_lem *lem, t_room *curr_room, int launched_ants, int *bfs_lvl);
 void				launch_ants(t_lem *lem, t_room *start, int ants);
+
+/*
+	init structs
+ */
+t_room				*create_room(char **name, int x, int y);
+t_lem				*create_lem_in();
+
+/*
+	handle_errors
+ */
+int					handle_errors(t_lem *lem);
+int					check_ants_num(char *lines);
+
+/*
+	path_creating
+ */
+int					next_path(t_lem *lem, t_room *curr_room, t_room *start_path_room);
+int					is_path(t_lem *lem, t_room *start);
+void				form_paths(t_lem *lem, t_room *start);
+
+/*
+ * copy_lines
+ */
+
+char				*lem_strcat(char *s1, const char *s2, int *bytes);
+char				*concat_lines(char *dst, char *src, int *bytes, int *mult);
 #endif

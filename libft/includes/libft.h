@@ -21,6 +21,7 @@
 # include "sort_algs.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
+# include <sys/errno.h>
 
 # define MAX_LONG		9223372036854775807
 # define MAX_INTEGER	2147483647

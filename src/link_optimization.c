@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 19:57:55 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/17 14:34:41 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/19 10:59:02 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,7 +247,7 @@ void delete_cur_output_link(t_room *curr_room, t_lem *lem)
 	{
 		reverse_bfs_set_lel(lem, ht_get(lem->ht, lem->end), curr_room->name);
 		if (curr_room->out_link[curr_out_degree] != NULL && curr_room->out_link[curr_out_degree][0] != '\0')
-			min_bfs_lvl = ht_get(lem->ht, curr_room->out_link[curr_out_degree++])->bfs_lvl;
+			min_bfs_lvl = ht_get(lem->ht, curr_room->out_link[curr_out_degree])->bfs_lvl;
 		while (curr_out_degree < curr_room->out_degree)
 		{
 			deciding_room = ht_get(lem->ht, curr_room->out_link[curr_out_degree]);
@@ -264,7 +264,15 @@ void delete_cur_output_link(t_room *curr_room, t_lem *lem)
 			deciding_room = ht_get(lem->ht, curr_room->out_link[curr_out_degree]);
 			if (curr_room->out_link[curr_out_degree] != NULL && curr_room->out_link[curr_out_degree][0] != '\0')
 			{
-				if ((deciding_room->bfs_lvl) > min_bfs_lvl)
+				if ((deciding_room->bfs_lvl) >= min_bfs_lvl && deciding_room->visited == 0)
+				{
+					out_delete_pos = get_pos_link_out(curr_room->out_link, deciding_room->name, curr_room->out_degree);
+					in_delete_pos = get_pos_link_in(deciding_room->in_link, curr_room->name, deciding_room->in_degree);
+					delete_current_link(curr_room, deciding_room, out_delete_pos, in_delete_pos);
+					curr_out_degree++;
+					continue;
+				}
+				if ((deciding_room->bfs_lvl) >= min_bfs_lvl && get_real_out_links(curr_room) >= 2 && deciding_room->visited == 1)
 				{
 					out_delete_pos = get_pos_link_out(curr_room->out_link, deciding_room->name, curr_room->out_degree);
 					in_delete_pos = get_pos_link_in(deciding_room->in_link, curr_room->name, deciding_room->in_degree);

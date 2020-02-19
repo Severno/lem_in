@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 09:50:58 by sapril            #+#    #+#             */
-/*   Updated: 2020/02/17 16:58:54 by sapril           ###   ########.fr       */
+/*   Updated: 2020/02/19 13:38:20 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			add_link(t_lem *lem, char *lines, char **split_str)
 	{
 		if ((check_room = ft_strchr(lines, '-')))
 		{
-			ft_printf("Yes this is room %s\n", check_room); // TODO добавить проверку на ---8---, аргументы с дефисами.
+//			ft_printf("Yes this is room %s\n", check_room); // TODO добавить проверку на ---8---, аргументы с дефисами.
 			// можно сделать через ft_strcmp и выводить элемент где оин отличаются от тех что хранятся в lem->ht
 		}
 	}
@@ -56,7 +56,7 @@ void			add_link(t_lem *lem, char *lines, char **split_str)
 	{
 		if ((check_room = ft_strchr(lines, '-')))
 		{
-			ft_printf("Yes this is room %s\n", check_room + 1);
+//			ft_printf("Yes this is room %s\n", check_room + 1);
 		}
 	}
 
@@ -123,7 +123,7 @@ void			add_start_or_end(t_lem *lem, char **split_str, char **lines)
 	(*lines) = NULL;
 	free_split_str(&split_str);
 	ret = get_next_line(lem->fd, lines);
-	ft_printf("%s\n", *lines);
+//	ft_printf("%s\n", *lines);
 	split_str = ft_strsplit(*lines, ' ');
 	if (ret <= 0 || !is_room(lem, split_str, lines))
 	{
@@ -159,6 +159,13 @@ int check_coord_valid(char *x, char *y)
 	return (0);
 }
 
+void	terminate(char *s)
+{
+	ft_putstr(s);
+	exit(1);
+}
+
+
 void		get_info(t_lem *lem, char *file_name)
 {
 	char	*lines;
@@ -168,23 +175,26 @@ void		get_info(t_lem *lem, char *file_name)
 
 	while (get_next_line(lem->fd, &lines) > 0)
 	{
-		ft_printf("%s\n", lines);
+		concat_lines(lem->concat_lines, lines, &lem->concat_bytes, &lem->concat_mult);
 		if (lem->errors == 0)
 		{
 			split_str = ft_strsplit(lines, ' ');
 			if (is_comment(lines))
 			{
-				free_split_str(&split_str);
-				free(lines);
-				lines = NULL;
+				free_line_info(&split_str, &lines);
 				continue;
 			}
 			else if (is_ant(lines, split_str))
 			{
-				lem->ants = ft_atoi(split_str[0]);
-				free_split_str(&split_str);
-				free(lines);
-				lines = NULL;
+				if (check_ants_num(lines))
+					lem->ants = ft_atoi(split_str[0]);
+				else
+				{
+					free_line_info(&split_str, &lines);
+					free_data(&lem);
+					terminate(RED"ERROR: Number of ants is incorrent\n"RESET);
+					lem->errors++;
+				}
 			}
 			else if (is_end_or_start(lem, split_str))
 				add_start_or_end(lem, split_str, &lines);
@@ -193,12 +203,7 @@ void		get_info(t_lem *lem, char *file_name)
 			else if (ft_strchr(lines, '-'))
 				add_link(lem, lines, split_str);
 			else
-			{
-				free_split_str(&split_str);
-				free(lines);
-				lines = NULL;
-			}
+				free_line_info(&split_str, &lines);
 		}
-
 	}
 }

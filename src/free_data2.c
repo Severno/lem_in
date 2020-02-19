@@ -65,3 +65,10 @@ void			free_split_str(char ***tab)
 	free(*tab);
 	*tab = 0;
 }
+
+void free_line_info(char ***split_str, char **lines)
+{
+	free_split_str(split_str);
+	free(*lines);
+	lines = NULL;
+}

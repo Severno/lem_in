@@ -273,6 +273,9 @@
 		<Unit filename="/Users/sapril/lem_in/src/bfs.c">
 			<Option target="lem_in"/>
 		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/copy_lines.c">
+			<Option target="lem_in"/>
+		</Unit>
 		<Unit filename="/Users/sapril/lem_in/src/free_data.c">
 			<Option target="lem_in"/>
 		</Unit>
@@ -282,14 +285,23 @@
 		<Unit filename="/Users/sapril/lem_in/src/get_info.c">
 			<Option target="lem_in"/>
 		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/handle_errors.c">
+			<Option target="lem_in"/>
+		</Unit>
 		<Unit filename="/Users/sapril/lem_in/src/hashmap.c">
 			<Option target="hashmap"/>
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/init_structs.c">
 			<Option target="lem_in"/>
 		</Unit>
 		<Unit filename="/Users/sapril/lem_in/src/lem_in.c">
 			<Option target="lem_in"/>
 		</Unit>
 		<Unit filename="/Users/sapril/lem_in/src/link_optimization.c">
+			<Option target="lem_in"/>
+		</Unit>
+		<Unit filename="/Users/sapril/lem_in/src/path_creating.c">
 			<Option target="lem_in"/>
 		</Unit>
 		<Unit filename="/Users/sapril/lem_in/src/printing.c">

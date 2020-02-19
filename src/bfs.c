@@ -61,7 +61,8 @@ void reverse_bfs_set_lel(t_lem *lem, t_room *start, char *end)
 //		ft_printf(BLUE"Current working %s \n"RESET, current->room->name);
 		if (!ht_get(seen, current->room->name)) // проверяем есть ли в просмотренных
 		{
-			ht_set(seen, current->room->name, &current->room); // если нет, добавляем в просмотренные
+			ht_set(seen, current->room->name, &current->room);
+			current->room->visited = 1;// если нет, добавляем в просмотренные
 //			ft_printf("Current node = %s, bfs_lvl = %d\n", current->room->name, current->room->bfs_lvl);
 			while (in_degree < current->room->in_degree) // смотрим все исходящие ссылки из текущий комнаты
 			{
